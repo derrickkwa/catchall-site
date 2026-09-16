@@ -1,0 +1,592 @@
+<title>Judgment Layer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+  :root{
+    --ground:#0c131d;
+    --ground-2:#101a27;
+    --rule:#1e2b3b;
+    --rule-soft:#17222f;
+    --ink:#e8ecf2;
+    --ink-2:#9dabbd;
+    --ink-3:#6a7a8d;
+    --cool:#5d82ad;
+    --brass:#c89243;
+    --brass-dim:#8f6a35;
+    --measure:66ch;
+    --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:1200px;
+    margin:0 auto;
+    padding-inline:28px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--rule);}
+  #fan{display:block;width:100%;height:clamp(320px,40vw,500px);}
+  .hero-scrim{
+    position:absolute;inset:auto 0 0 0;height:75%;
+    background:linear-gradient(to bottom,rgba(12,19,29,0) 0%,rgba(12,19,29,.82) 55%,var(--ground) 100%);
+    pointer-events:none;
+  }
+  .hero-copy{position:absolute;inset:auto 0 0 0;padding-block:0 38px;}
+  .hero-copy h1{
+    margin:0;
+    font-size:clamp(34px,6.4vw,68px);
+    font-weight:600;
+    letter-spacing:-.038em;
+    line-height:1.04;
+    max-width:21ch;
+    text-wrap:balance;
+  }
+  .hero-note{
+    margin:16px 0 0;max-width:52ch;
+    color:var(--ink-2);font-size:15px;line-height:1.55;
+  }
+
+  /* ---------- rhythm ---------- */
+  section{padding-block:66px;border-bottom:1px solid var(--rule-soft);}
+  section:last-of-type{border-bottom:0;}
+
+  /* claim on the left, argument on the right — the page's prose layout */
+  .split-row{
+    display:grid;grid-template-columns:1.04fr 1fr;
+    gap:60px;align-items:start;
+  }
+  .split-row h2{max-width:none;margin-bottom:0;}
+  .split-row p{max-width:none;}
+  .split-row p:last-child{margin-bottom:0;}
+
+  .statement{padding-block:92px;}
+  .statement h2{
+    font-size:clamp(28px,4.1vw,46px);
+    letter-spacing:-.034em;line-height:1.1;
+  }
+  .statement p{font-size:17.5px;}
+
+  h2{
+    margin:0 0 18px;
+    font-size:clamp(23px,3.5vw,32px);
+    font-weight:600;letter-spacing:-.026em;line-height:1.2;
+    max-width:34ch;text-wrap:balance;
+  }
+
+  p{margin:0 0 16px;max-width:var(--measure);color:var(--ink-2);}
+  p.lead{color:var(--ink);font-size:18px;}
+  p:last-child{margin-bottom:0;}
+
+  em{font-style:normal;color:var(--ink);}
+
+  /* ---------- the three tracks ---------- */
+  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-soft);}
+  .track{
+    background:var(--ground);
+    border-top:1px solid var(--rule);
+    padding:20px 18px 24px;
+    display:flex;flex-direction:column;gap:11px;
+  }
+  .track-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
+  .track-name{
+    font-family:var(--mono);font-size:11px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);
+  }
+  .track-state{
+    font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);white-space:nowrap;
+  }
+  .track-does{color:var(--ink-2);font-size:15px;line-height:1.55;}
+  .track.open{
+    border-top-color:var(--brass);
+    background:linear-gradient(to bottom,rgba(200,146,67,.085),rgba(200,146,67,0) 60%),var(--ground);
+  }
+  .track.open .track-name{color:var(--brass);}
+  .track.open .track-does{color:var(--ink);}
+  .track.open .track-state{color:var(--brass);}
+
+  /* ---------- the two builds ---------- */
+  .builds{
+    display:grid;grid-template-columns:1fr 1fr;gap:1px;
+    background:var(--rule-soft);margin-top:12px;align-items:stretch;
+  }
+  .build{
+    background:var(--ground);border-top:1px solid var(--rule);
+    padding:22px 20px 26px;
+  }
+  .build h3{
+    margin:0 0 10px;font-size:20px;font-weight:600;
+    letter-spacing:-.022em;line-height:1.26;color:var(--ink);
+  }
+  .build > p{font-size:16px;line-height:1.62;}
+  .build.context{
+    border-top-color:var(--cool);
+    background:linear-gradient(to bottom,rgba(93,130,173,.075),rgba(93,130,173,0) 58%),var(--ground);
+  }
+  .build.context h3{color:#8fb0d6;}
+  .build.research{
+    border-top-color:var(--brass);
+    background:linear-gradient(to bottom,rgba(200,146,67,.085),rgba(200,146,67,0) 58%),var(--ground);
+  }
+  .build.research h3{color:var(--brass);}
+  .build.research > p{font-size:17px;color:var(--ink-2);}
+  .build.research > p:first-of-type{color:var(--ink);}
+
+  /* ---------- mechanism ---------- */
+  .parts{display:grid;gap:0;margin-top:20px;border-top:1px solid var(--rule-soft);}
+  .part{
+    display:grid;grid-template-columns:24px 1fr;gap:4px 16px;
+    padding-block:15px;border-bottom:1px solid var(--rule-soft);
+  }
+  .part:last-child{border-bottom:0;padding-bottom:0;}
+  .part-icon{grid-row:1 / span 2;padding-top:1px;color:var(--cool);}
+  .part-icon svg{display:block;width:22px;height:22px;}
+  .research .part-icon{color:var(--brass);}
+  .part-k{
+    font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--ink);
+  }
+  .part-v{color:var(--ink-2);font-size:14.5px;line-height:1.56;}
+
+  /* ---------- sequence ---------- */
+  .seq{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;}
+  .seq-step{position:relative;border-top:1px solid var(--rule);padding:24px 16px 0 0;}
+  .seq-step::before{
+    content:"";position:absolute;top:-5px;left:0;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--ground);border:1px solid var(--ink-3);
+  }
+  .seq-step.now{border-top-color:var(--brass);}
+  .seq-step.now::before{background:var(--brass);border-color:var(--brass);}
+  .seq-k{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  }
+  .seq-step.now .seq-k{color:var(--brass);}
+  .seq-n{font-size:13.5px;color:var(--ink-3);margin-top:7px;line-height:1.5;}
+  .seq-step.now .seq-n{color:var(--ink-2);}
+
+  /* ---------- audience + contact ---------- */
+  .invite{text-align:center;}
+  .invite h2{max-width:22ch;margin-inline:auto;}
+  .who{
+    display:grid;grid-template-columns:1fr 1fr;gap:52px;
+    max-width:880px;margin:40px auto 0;
+  }
+  .who-row{border-top:1px solid var(--rule);padding-top:20px;}
+  .who-k{
+    font-family:var(--mono);font-size:10.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:12px;
+  }
+  .who-v{color:var(--ink-2);font-size:15.5px;line-height:1.62;}
+
+  /* ---------- the loop ---------- */
+  .after-tracks{margin:30px 0 0;max-width:none;color:var(--ink-2);font-size:16px;}
+  .destination{margin:10px 0 0;max-width:none;font-size:16.5px;color:var(--ink-2);}
+  .beat{margin:22px 0 0;max-width:none;color:var(--ink);font-size:19px;letter-spacing:-.012em;}
+  .split-row .beat{margin-top:18px;}
+  .split-row.second{margin-top:56px;padding-top:44px;border-top:1px solid var(--rule-soft);}
+
+  .loop{margin-top:44px;border-top:1px solid var(--rule);padding-top:24px;}
+  .loop svg{display:block;width:100%;max-width:1000px;height:auto;margin-inline:auto;}
+  .loop-cap{text-align:center;}
+  .loop-key{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;}
+  .loop-key span{
+    display:flex;align-items:center;gap:8px;
+    font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);
+  }
+  .loop-key i{width:11px;height:11px;border:1px solid var(--rule);display:block;}
+  .loop-key .open i{border-color:var(--brass);background:rgba(200,146,67,.16);}
+  .loop-key .open{color:var(--brass);}
+  .loop-key .building i{border-color:var(--cool);background:rgba(93,130,173,.18);}
+  .loop-key .building{color:var(--cool);}
+  .loop-cap{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);margin-top:14px;
+  }
+  #echo{display:block;width:100%;height:clamp(140px,16vw,210px);opacity:.75;}
+
+  .contact{margin-top:48px;text-align:center;}
+  .contact a{
+    display:inline-block;color:var(--ground);background:var(--brass);
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+    padding:13px 22px;text-decoration:none;font-weight:500;
+    transition:background .18s ease;
+  }
+  .contact a:hover{background:#d9a557;}
+  .contact a:focus-visible{outline:2px solid var(--cool);outline-offset:3px;}
+
+  footer{
+    padding-block:30px 46px;border-top:1px solid var(--rule-soft);
+    font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--ink-3);
+  }
+
+  @media (max-width:640px){
+    body{font-size:16px;}
+    #fan{height:300px;}
+    section{padding-block:48px;}
+    .tracks{grid-template-columns:1fr;}
+    .track{padding:18px 0 20px;}
+    .track.open{padding-inline:14px;margin-inline:-14px;}
+    .statement{padding-block:56px;}
+    .statement .wrap{grid-template-columns:1fr;gap:26px;}
+    .seq{grid-template-columns:1fr 1fr;gap:26px 0;margin-top:34px;}
+    .builds{grid-template-columns:1fr;}
+    .build{padding:20px 0 24px;}
+    .build.research{padding-inline:14px;margin-inline:-14px;}
+    .who{grid-template-columns:1fr;gap:30px;margin-top:30px;}
+    .who-row{padding-top:18px;}
+    .split-row{grid-template-columns:1fr;gap:22px;}
+    .loop{margin-top:28px;}
+    .loop svg{min-width:680px;}
+    .loop-scroll{overflow-x:auto;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+  }
+</style>
+
+<div class="hero">
+  <canvas id="fan" aria-hidden="true"></canvas>
+  <div class="hero-scrim"></div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <h1>The work is getting automated. The judgment isn&rsquo;t.</h1>
+      <p class="hero-note">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does &mdash; deciding what matters, what to do about it, and whether it worked.</p>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="tracks">
+        <div class="track">
+          <div class="track-head">
+            <div class="track-name">Applied AI</div>
+            <div class="track-state">Funded</div>
+          </div>
+          <div class="track-does">Takes existing models and deploys them into existing businesses. Apps, forward-deployed engineers, agents as a service.</div>
+        </div>
+        <div class="track open">
+          <div class="track-head">
+            <div class="track-name">Judgment</div>
+            <div class="track-state">Unclaimed</div>
+          </div>
+          <div class="track-does">The models, methods and priors a machine needs to decide well inside a particular field. Neither side has made it their problem.</div>
+        </div>
+        <div class="track">
+          <div class="track-head">
+            <div class="track-name">AI research</div>
+            <div class="track-state">Funded</div>
+          </div>
+          <div class="track-does">Extends what those models can do. Continual learning, world models, new attention mechanisms.</div>
+        </div>
+      </div>
+      <p class="after-tracks">Models only recently got good enough at execution that deciding became the constraint. That is the part we are building.</p>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <div class="split-row">
+      <h2>A general model brought to a specialist decision has no priors but the internet&rsquo;s.</h2>
+      <div class="statement-body">
+      <p class="lead">Judgment is not reasoning in a vacuum. It is a field&rsquo;s accumulated frameworks, the things it has already established, the methods that actually measure it, and a record of what has worked and what hasn&rsquo;t. Take those away and a very capable model will reason fluently to an average answer &mdash; and sound certain doing it.</p>
+      <p>That body of work doesn&rsquo;t exist for marketing, and it doesn&rsquo;t exist for most fields. As long as a person owns the decision, the reasoning behind it rarely leaves their head. Nothing is written down, so nothing is scored, so the next decision starts where the last one did.</p>
+      <p class="beat">Nothing compounds.</p>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>We are building a judgment engine.</h2>
+      <p>One half assembles what a decision rests on. The other is the research into what should be making the decision.</p>
+
+      <div class="builds">
+        <div class="build context">
+          <h3>The context layer</h3>
+          <p>Everything a decision in the field rests on, gathered in one place. Today it is scattered across tools, or held in someone&rsquo;s head.</p>
+
+          <div class="parts">
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="17" height="17"/><path d="M2.5 8.2h17M2.5 13.8h17M8.2 2.5v17"/></svg></div>
+              <div class="part-k">Frameworks</div>
+              <div class="part-v">What the field has already established, loaded as priors &mdash; and revised when the evidence disagrees.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 11a7.8 7.8 0 1 1 2.6 5.8"/><path d="M3 12.6 5.6 16.9 9.9 14.9"/><path d="M11 7.2v4.3l2.9 1.7"/></svg></div>
+              <div class="part-k">Past learnings</div>
+              <div class="part-v">What was decided and why, what it weighed, what was predicted, and what actually happened.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 18.4h16.4"/><path d="M5.6 18.4v-5.1M9.7 18.4V8.4M13.8 18.4v-7.6M17.9 18.4V4.2"/></svg></div>
+              <div class="part-k">Performance data</div>
+              <div class="part-v">Every platform the work runs on, reconciled to one grain instead of one dashboard each.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.4" cy="11" r="5.6"/><circle cx="14.2" cy="11" r="5.6"/></svg></div>
+              <div class="part-k">Category context</div>
+              <div class="part-v">Where demand is, who else is competing for it, and which way the market is moving.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19V7.6L11 3l8 4.6V19"/><path d="M3 19h16"/><path d="M8.6 19v-5.2h4.8V19"/></svg></div>
+              <div class="part-k">Company context</div>
+              <div class="part-v">Goals, constraints and economics &mdash; margin, inventory, cash, and what this particular effort is for.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="build research" id="research-col">
+          <h3>The research</h3>
+          <p>How best to turn that context into judgment. A frontier model on its own is a general reasoner pointed at a specialist problem.</p>
+
+          <div class="parts">
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 5.5h15.2M3.4 10h11.4M3.4 14.5h7.6"/><circle cx="18" cy="14.5" r="1.5"/></svg></div>
+              <div class="part-k">Language models</div>
+              <div class="part-v">Where the work really is language &mdash; reading the unstructured record, forming hypotheses, pressure-testing a recommendation.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 17.6c3.4 0 3.9-11.4 8.4-11.4s5 11.4 8.4 11.4"/><path d="M2.6 17.6h16.8"/></svg></div>
+              <div class="part-k">Statistical methods</div>
+              <div class="part-v">Priors and shrinkage, hierarchical fitting across accounts, change-point detection. Language models are bad at arithmetic over long series.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.6" cy="11" r="2.2"/><circle cx="17.4" cy="5.6" r="2.2"/><circle cx="17.4" cy="16.4" r="2.2"/><path d="M6.6 10.1 15.4 6.4M6.6 11.9l8.8 3.7"/></svg></div>
+              <div class="part-k">Causal inference</div>
+              <div class="part-v">Holdouts, incrementality and counterfactual baselines &mdash; separating what we caused from what was going to happen anyway.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 18.2C7 18.2 11.6 14.4 19.6 3.8" opacity=".45"/><path d="M2.4 18.2C7.6 18.2 12.8 15.6 19.6 9.4" opacity=".45"/><path d="M2.4 18.2c6 0 11.4 1 17.2-1.4" opacity=".45"/><path d="M2.4 18.2C8 18.2 13.4 15 19.6 6.6"/></svg></div>
+              <div class="part-k">Simulation</div>
+              <div class="part-v">Modelling markets rather than individuals, and learning policies that hold across the range of response curves the evidence permits.</div>
+            </div>
+            <div class="part">
+              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="3.1"/><path d="M11 2.6v5.3M11 14.1v5.3M2.6 11h5.3M14.1 11h5.3"/></svg></div>
+              <div class="part-k">Purpose-trained models</div>
+              <div class="part-v">Small models for the jobs where consistency beats intelligence, trained for the field rather than borrowed from everything at once.</div>
+            </div>
+          </div>
+
+          <p style="margin-top:22px">We think this is where the step change comes from, rather than from a larger general model.</p>
+        </div>
+      </div>
+
+      <div class="loop">
+        <div class="loop-key">
+          <span><i></i>Largely works today</span>
+          <span class="building"><i></i>Being built</span>
+          <span class="open"><i></i>The open problem</span>
+        </div>
+        <div class="loop-scroll">
+        <svg viewBox="0 0 1000 302" role="img" aria-label="The loop: context feeds selection, then diagnosis, then strategy, then execution; execution feeds learning, and learning is written back into context. Selection, diagnosis, strategy and learning together form the judgment problem and are open. Context is being built. Execution largely works today.">
+          <defs>
+            <marker id="ah" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
+              <path d="M0.8 1.2 6.2 4 0.8 6.8Z" fill="#5d82ad"/>
+            </marker>
+          </defs>
+
+          <rect x="184" y="44" width="514" height="240" fill="rgba(200,146,67,.045)"
+                stroke="#c89243" stroke-width="1.1" stroke-dasharray="5 5" opacity=".85"/>
+          <text x="441" y="32" font-family="JetBrains Mono, monospace" font-size="11.5"
+                letter-spacing="2.6" text-anchor="middle" fill="#c89243">JUDGMENT</text>
+
+          <g font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="1.5" text-anchor="middle">
+            <rect x="1" y="72" width="150" height="62" fill="rgba(93,130,173,.12)" stroke="#5d82ad"/>
+            <text x="76" y="109" fill="#8fb0d6">CONTEXT</text>
+
+            <rect x="196" y="72" width="150" height="62" fill="rgba(200,146,67,.10)" stroke="#c89243"/>
+            <text x="271" y="109" fill="#c89243">SELECTION</text>
+
+            <rect x="366" y="72" width="150" height="62" fill="rgba(200,146,67,.10)" stroke="#c89243"/>
+            <text x="441" y="109" fill="#c89243">DIAGNOSIS</text>
+
+            <rect x="536" y="72" width="150" height="62" fill="rgba(200,146,67,.10)" stroke="#c89243"/>
+            <text x="611" y="109" fill="#c89243">STRATEGY</text>
+
+            <rect x="840" y="72" width="160" height="62" fill="none" stroke="#1e2b3b"/>
+            <text x="920" y="109" fill="#9dabbd">EXECUTION</text>
+
+            <rect x="196" y="196" width="490" height="62" fill="rgba(200,146,67,.10)" stroke="#c89243"/>
+            <text x="441" y="233" fill="#c89243">LEARNING</text>
+          </g>
+
+          <g stroke="#5d82ad" stroke-width="1.2" fill="none">
+            <path d="M151 103h33" marker-end="url(#ah)"/>
+            <path d="M346 103h8" marker-end="url(#ah)"/>
+            <path d="M516 103h8" marker-end="url(#ah)"/>
+            <path d="M686 103h148" marker-end="url(#ah)"/>
+            <path d="M920 134v93H700" marker-end="url(#ah)"/>
+            <path d="M196 227H40v-81" marker-end="url(#ah)"/>
+          </g>
+
+          <text x="118" y="200" font-family="JetBrains Mono, monospace" font-size="9.5"
+                letter-spacing="1.6" text-anchor="middle" fill="#5d82ad">SCORED, THEN</text>
+          <text x="118" y="215" font-family="JetBrains Mono, monospace" font-size="9.5"
+                letter-spacing="1.6" text-anchor="middle" fill="#5d82ad">WRITTEN BACK</text>
+        </svg>
+        </div>
+        <div class="loop-cap">Execution largely works today. The context layer is what we are building. Choosing what matters, reading it, deciding and scoring are the open problem.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="split-row">
+        <h2>No two businesses are the same problem.</h2>
+        <div>
+          <p>Which frameworks apply, what data exists, which methods identify anything at all &mdash; these change from one business to the next. Ship a single fixed model and you have described an average company that doesn&rsquo;t exist.</p>
+          <p>So the structure is shared and the fit is not. The record, the machinery and the method library are common to every business. Which methods apply, how far each one is trusted, and where the thresholds sit are fitted per business and re-calibrated as evidence arrives &mdash; <em>by the system, not by hand.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="split-row">
+        <h2>The end state is judgment across every decision a business makes.</h2>
+        <div>
+          <p>Each function needs its own context and builds its own record &mdash; the machinery is the same, what it learns is not.</p>
+        </div>
+      </div>
+
+      <div class="split-row second">
+        <h2>We start in marketing.</h2>
+        <div>
+          <p>We run an agency, so we have the accounts, the operators and the decisions &mdash; and the standing to require experiments rather than ask for them. Marketing judgment is opinionated, constantly exercised, and it settles against numbers on a timescale you can learn from.</p>
+          <p>It is also honest about the difficulty. Marketing outcomes are noisy, lagged and confounded.</p>
+          <p class="beat">If the method holds here, it holds in quieter places.</p>
+        </div>
+      </div>
+
+      <div class="seq">
+        <div class="seq-step now">
+          <div class="seq-k">Marketing</div>
+          <div class="seq-n">Where we are building now.</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-k">Operations</div>
+          <div class="seq-n">Its own context, its own record.</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-k">Finance</div>
+          <div class="seq-n">Same machinery, different evidence.</div>
+        </div>
+        <div class="seq-step">
+          <div class="seq-k">Hiring</div>
+          <div class="seq-n">Judgment, wherever it is exercised.</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="invite">
+    <div class="wrap">
+      <h2>Come and build this with us.</h2>
+      <div class="who">
+        <div class="who-row">
+          <div class="who-k">Researchers &amp; engineers</div>
+          <div class="who-v">People who want to work on deciding well under messy, partial and shifting context &mdash; somewhere real businesses feel the result, rather than a benchmark.</div>
+        </div>
+        <div class="who-row">
+          <div class="who-k">Investors</div>
+          <div class="who-v">Partners for a long journey rather than a cheque. Ideally with businesses we can operate in, and a line to the few people already working on this.</div>
+        </div>
+      </div>
+      <div class="contact">
+        <a href="mailto:hello@example.com">Get in touch</a>
+      </div>
+    </div>
+    <canvas id="echo" aria-hidden="true"></canvas>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Stealth &middot; 2026</div>
+</footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PITCH = 19, CELL = 13;
+
+  function hash(n) { var x = Math.sin(n) * 43758.5453; return x - Math.floor(x); }
+
+  // A cell is "held" — never automated — if its hash clears the threshold.
+  function isHeld(cx, cy) {
+    return hash(cx * 91.7 + cy * 47.3) > 0.968;
+  }
+
+  function makeField(canvas, opts) {
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, cols = 0, rows = 0;
+
+    function resize() {
+      var d = Math.min(window.devicePixelRatio || 1, 2);
+      W = canvas.clientWidth; H = canvas.clientHeight;
+      canvas.width = Math.round(W * d); canvas.height = Math.round(H * d);
+      ctx.setTransform(d, 0, 0, d, 0, 0);
+      cols = Math.ceil(W / PITCH) + 1;
+      rows = Math.ceil(H / PITCH) + 1;
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      var wave = t * 0.00035;
+
+      for (var cy = 0; cy < rows; cy++) {
+        for (var cx = 0; cx < cols; cx++) {
+          var x = cx * PITCH, y = cy * PITCH;
+
+          if (isHeld(cx, cy)) {
+            // judgment: never fills. outlined, faintly breathing.
+            var pulse = reduce ? 0.5 : 0.42 + Math.sin(t * 0.0011 + cx + cy) * 0.16;
+            ctx.strokeStyle = 'rgba(200,146,67,' + (pulse * opts.strength).toFixed(3) + ')';
+            ctx.lineWidth = 1;
+            ctx.strokeRect(x + 0.5, y + 0.5, CELL, CELL);
+            continue;
+          }
+
+          // work: a slow front of completion sweeping across the field
+          var phase = cx * 0.17 + cy * 0.09 - wave;
+          var fill = (Math.sin(phase) + 1) / 2;
+          fill = fill * fill;
+          var a = (0.045 + fill * 0.30) * opts.strength;
+          ctx.fillStyle = 'rgba(93,130,173,' + a.toFixed(3) + ')';
+          ctx.fillRect(x, y, CELL, CELL);
+        }
+      }
+    }
+
+    function frame(t) { draw(t); requestAnimationFrame(frame); }
+    resize();
+    if (reduce) { draw(0); } else { requestAnimationFrame(frame); }
+    window.addEventListener('resize', function () { resize(); if (reduce) draw(0); });
+  }
+
+  makeField(document.getElementById('fan'), { strength: 1 });
+  makeField(document.getElementById('echo'), { strength: 0.55 });
+})();
+</script>
