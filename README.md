@@ -28,9 +28,15 @@ Three states, used consistently in the diagram and the build columns:
 
 | State | Token | Meaning |
 |---|---|---|
-| Solved | `--rule` | Largely works today (execution) |
-| Being built | `--cool` | The context layer |
-| Open | `--brass` | The judgment problem |
+| Solved | `--rule` `#d3d8de` | Largely works today (execution) |
+| Being built | `--cool` `#a17c3c` | The context layer — warm bronze, not grey |
+| Open | `--brass` `#1b53ff` | The judgment problem — the one signal colour |
+
+Ground is near-white `#fbfbfc`, ink `#0d1117`. Type is Archivo with JetBrains Mono.
+The hero and closing canvases draw a contour field — the landscape of possible
+strategies — with one committed path traced across it and the chosen point marked.
+
+Alternative treatments explored are kept in `variants/`.
 
 ## Before this goes live
 

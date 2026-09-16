@@ -2,22 +2,22 @@
 <title>Judgment Layer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=JetBrains+Mono:wght@400;500&display=swap">
 
 <style>
   :root{
-    --ground:#fbfbfc;
-    --ground-2:#f2f4f7;
-    --rule:#d3d8de;
-    --rule-soft:#e7eaee;
-    --ink:#0d1117;
-    --ink-2:#565f6c;
-    --ink-3:#8a929e;
-    --cool:#a17c3c;
-    --brass:#1b53ff;
-    --brass-dim:#1b53ff;
+    --ground:#17150f;
+    --ground-2:#1d1b13;
+    --rule:#3a3527;
+    --rule-soft:#2a271c;
+    --ink:#ece6d8;
+    --ink-2:#a49c87;
+    --ink-3:#7a7261;
+    --cool:#7d9070;
+    --brass:#b8874a;
+    --brass-dim:#8a6535;
     --measure:66ch;
-    --sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    --sans:"Karla",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   }
 
@@ -41,17 +41,18 @@
   #fan{display:block;width:100%;height:clamp(320px,40vw,500px);}
   .hero-scrim{
     position:absolute;inset:auto 0 0 0;height:75%;
-    background:linear-gradient(to bottom,rgba(251,251,252,0) 0%,rgba(251,251,252,.9) 46%,var(--ground) 100%);
+    background:linear-gradient(to bottom,rgba(23,21,15,0) 0%,rgba(23,21,15,.82) 55%,var(--ground) 100%);
     pointer-events:none;
   }
   .hero-copy{position:absolute;inset:auto 0 0 0;padding-block:0 38px;}
   .hero-copy h1{
+    font-family:"Newsreader",Georgia,serif;font-weight:400;
     margin:0;
     font-size:clamp(34px,6.4vw,68px);
     font-weight:600;
-    letter-spacing:-.045em;
-    line-height:1.06;
-    max-width:none;
+    letter-spacing:-.038em;
+    line-height:1.04;
+    max-width:21ch;
     text-wrap:balance;
   }
   .hero-note{
@@ -73,13 +74,14 @@
   .split-row p:last-child{margin-bottom:0;}
 
   .statement{padding-block:92px;}
-  .statement h2{
+  .statement h2{font-family:"Newsreader",Georgia,serif;font-weight:400;
     font-size:clamp(28px,4.1vw,46px);
     letter-spacing:-.034em;line-height:1.1;
   }
   .statement p{font-size:17.5px;}
 
   h2{
+    font-family:"Newsreader",Georgia,serif;font-weight:400;
     margin:0 0 18px;
     font-size:clamp(23px,3.5vw,32px);
     font-weight:600;letter-spacing:-.026em;line-height:1.2;
@@ -112,7 +114,7 @@
   .track-does{color:var(--ink-2);font-size:15px;line-height:1.55;}
   .track.open{
     border-top-color:var(--brass);
-    background:linear-gradient(to bottom,rgba(27,83,255,.085),rgba(27,83,255,0) 60%),var(--ground);
+    background:linear-gradient(to bottom,rgba(184,135,74,.085),rgba(184,135,74,0) 60%),var(--ground);
   }
   .track.open .track-name{color:var(--brass);}
   .track.open .track-does{color:var(--ink);}
@@ -134,12 +136,12 @@
   .build > p{font-size:16px;line-height:1.62;}
   .build.context{
     border-top-color:var(--cool);
-    background:linear-gradient(to bottom,rgba(161,124,60,.075),rgba(161,124,60,0) 58%),var(--ground);
+    background:linear-gradient(to bottom,rgba(125,144,112,.075),rgba(125,144,112,0) 58%),var(--ground);
   }
-  .build.context h3{color:#8a6b2e;}
+  .build.context h3{color:#9cb08c;}
   .build.research{
     border-top-color:var(--brass);
-    background:linear-gradient(to bottom,rgba(27,83,255,.085),rgba(27,83,255,0) 58%),var(--ground);
+    background:linear-gradient(to bottom,rgba(184,135,74,.085),rgba(184,135,74,0) 58%),var(--ground);
   }
   .build.research h3{color:var(--brass);}
   .build.research > p{font-size:17px;color:var(--ink-2);}
@@ -210,9 +212,9 @@
     text-transform:uppercase;color:var(--ink-3);
   }
   .loop-key i{width:11px;height:11px;border:1px solid var(--rule);display:block;}
-  .loop-key .open i{border-color:var(--brass);background:rgba(27,83,255,.16);}
+  .loop-key .open i{border-color:var(--brass);background:rgba(184,135,74,.16);}
   .loop-key .open{color:var(--brass);}
-  .loop-key .building i{border-color:var(--cool);background:rgba(161,124,60,.18);}
+  .loop-key .building i{border-color:var(--cool);background:rgba(125,144,112,.18);}
   .loop-key .building{color:var(--cool);}
   .loop-cap{
     font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;
@@ -227,7 +229,7 @@
     padding:13px 22px;text-decoration:none;font-weight:500;
     transition:background .18s ease;
   }
-  .contact a:hover{background:#0b3ae0;}
+  .contact a:hover{background:#c79a5e;}
   .contact a:focus-visible{outline:2px solid var(--cool);outline-offset:3px;}
 
   footer{
@@ -267,7 +269,7 @@
   <div class="hero-scrim"></div>
   <div class="hero-copy">
     <div class="wrap">
-      <h1>Work is being automated.<br>Judgment isn&rsquo;t.</h1>
+      <h1>The work is getting automated. The judgment isn&rsquo;t.</h1>
       <p class="hero-note">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does &mdash; deciding what matters, what to do about it, and whether it worked.</p>
     </div>
   </div>
@@ -401,36 +403,36 @@
         <svg viewBox="0 0 1000 302" role="img" aria-label="The loop: context feeds selection, then diagnosis, then strategy, then execution; execution feeds learning, and learning is written back into context. Selection, diagnosis, strategy and learning together form the judgment problem and are open. Context is being built. Execution largely works today.">
           <defs>
             <marker id="ah" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
-              <path d="M0.8 1.2 6.2 4 0.8 6.8Z" fill="#a17c3c"/>
+              <path d="M0.8 1.2 6.2 4 0.8 6.8Z" fill="#7d9070"/>
             </marker>
           </defs>
 
-          <rect x="184" y="44" width="514" height="240" fill="rgba(27,83,255,.045)"
-                stroke="#1b53ff" stroke-width="1.1" stroke-dasharray="5 5" opacity=".85"/>
+          <rect x="184" y="44" width="514" height="240" fill="rgba(184,135,74,.045)"
+                stroke="#b8874a" stroke-width="1.1" stroke-dasharray="5 5" opacity=".85"/>
           <text x="441" y="32" font-family="JetBrains Mono, monospace" font-size="11.5"
-                letter-spacing="2.6" text-anchor="middle" fill="#1b53ff">JUDGMENT</text>
+                letter-spacing="2.6" text-anchor="middle" fill="#b8874a">JUDGMENT</text>
 
           <g font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="1.5" text-anchor="middle">
-            <rect x="1" y="72" width="150" height="62" fill="rgba(161,124,60,.12)" stroke="#a17c3c"/>
-            <text x="76" y="109" fill="#8a6b2e">CONTEXT</text>
+            <rect x="1" y="72" width="150" height="62" fill="rgba(125,144,112,.12)" stroke="#7d9070"/>
+            <text x="76" y="109" fill="#9cb08c">CONTEXT</text>
 
-            <rect x="196" y="72" width="150" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="271" y="109" fill="#1b53ff">SELECTION</text>
+            <rect x="196" y="72" width="150" height="62" fill="rgba(184,135,74,.10)" stroke="#b8874a"/>
+            <text x="271" y="109" fill="#b8874a">SELECTION</text>
 
-            <rect x="366" y="72" width="150" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="441" y="109" fill="#1b53ff">DIAGNOSIS</text>
+            <rect x="366" y="72" width="150" height="62" fill="rgba(184,135,74,.10)" stroke="#b8874a"/>
+            <text x="441" y="109" fill="#b8874a">DIAGNOSIS</text>
 
-            <rect x="536" y="72" width="150" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="611" y="109" fill="#1b53ff">STRATEGY</text>
+            <rect x="536" y="72" width="150" height="62" fill="rgba(184,135,74,.10)" stroke="#b8874a"/>
+            <text x="611" y="109" fill="#b8874a">STRATEGY</text>
 
-            <rect x="840" y="72" width="160" height="62" fill="none" stroke="#d3d8de"/>
-            <text x="920" y="109" fill="#565f6c">EXECUTION</text>
+            <rect x="840" y="72" width="160" height="62" fill="none" stroke="#3a3527"/>
+            <text x="920" y="109" fill="#a49c87">EXECUTION</text>
 
-            <rect x="196" y="196" width="490" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="441" y="233" fill="#1b53ff">LEARNING</text>
+            <rect x="196" y="196" width="490" height="62" fill="rgba(184,135,74,.10)" stroke="#b8874a"/>
+            <text x="441" y="233" fill="#b8874a">LEARNING</text>
           </g>
 
-          <g stroke="#a17c3c" stroke-width="1.2" fill="none">
+          <g stroke="#7d9070" stroke-width="1.2" fill="none">
             <path d="M151 103h33" marker-end="url(#ah)"/>
             <path d="M346 103h8" marker-end="url(#ah)"/>
             <path d="M516 103h8" marker-end="url(#ah)"/>
@@ -440,9 +442,9 @@
           </g>
 
           <text x="118" y="200" font-family="JetBrains Mono, monospace" font-size="9.5"
-                letter-spacing="1.6" text-anchor="middle" fill="#a17c3c">SCORED, THEN</text>
+                letter-spacing="1.6" text-anchor="middle" fill="#7d9070">SCORED, THEN</text>
           <text x="118" y="215" font-family="JetBrains Mono, monospace" font-size="9.5"
-                letter-spacing="1.6" text-anchor="middle" fill="#a17c3c">WRITTEN BACK</text>
+                letter-spacing="1.6" text-anchor="middle" fill="#7d9070">WRITTEN BACK</text>
         </svg>
         </div>
         <div class="loop-cap">Execution largely works today. The context layer is what we are building. Choosing what matters, reading it, deciding and scoring are the open problem.</div>
@@ -570,8 +572,8 @@
           if (hit === null) { started = false; continue; }
           if (!started) { ctx.moveTo(x, hit); started = true; } else { ctx.lineTo(x, hit); }
         }
-        var fade = 0.07 + (1 - Math.abs(L / (LINES - 1) - 0.5) * 2) * 0.13;
-        ctx.strokeStyle = 'rgba(108,118,132,' + (fade * opts.strength).toFixed(3) + ')';
+        var fade = 0.10 + (1 - Math.abs(L / (LINES - 1) - 0.5) * 2) * 0.22;
+        ctx.strokeStyle = 'rgba(125,144,112,' + (fade * opts.strength).toFixed(3) + ')';
         ctx.lineWidth = 1;
         ctx.stroke();
       }
@@ -582,16 +584,16 @@
       ctx.moveTo(-10, H * 0.86);
       ctx.bezierCurveTo(W * 0.26, H * 0.80 + drift, W * 0.42, H * 0.32 - drift, W * 0.62, H * 0.36);
       ctx.bezierCurveTo(W * 0.78, H * 0.39, W * 0.88, H * 0.26, W + 10, H * 0.22);
-      ctx.strokeStyle = 'rgba(27,83,255,' + (0.42 * opts.strength).toFixed(2) + ')';
-      ctx.lineWidth = 1.35;
+      ctx.strokeStyle = 'rgba(184,135,74,' + (0.9 * opts.strength).toFixed(2) + ')';
+      ctx.lineWidth = 1.7;
       ctx.stroke();
 
       // the point it committed to
       ctx.beginPath();
-      ctx.arc(W * 0.62, H * 0.36, 3.6, 0, Math.PI * 2);
-      ctx.fillStyle = '#fbfbfc';
+      ctx.arc(W * 0.62, H * 0.36, 4.2, 0, Math.PI * 2);
+      ctx.fillStyle = '#17150f';
       ctx.fill();
-      ctx.strokeStyle = 'rgba(27,83,255,' + (0.7 * opts.strength).toFixed(2) + ')';
+      ctx.strokeStyle = 'rgba(184,135,74,' + (1 * opts.strength).toFixed(2) + ')';
       ctx.lineWidth = 1.5;
       ctx.stroke();
     }

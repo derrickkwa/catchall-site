@@ -1,0 +1,301 @@
+<meta name="robots" content="noindex, nofollow">
+<title>Five Visual Treatments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Karla:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Work+Sans:wght@400;500;600&display=swap">
+
+<style>
+  :root{
+    --page:#101216; --page-ink:#e9ecf1; --page-ink-2:#98a2b2; --page-rule:#232833;
+    --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  body{background:var(--page);color:var(--page-ink);font-family:var(--ui);margin:0;}
+  .shell{max-width:1180px;margin:0 auto;padding-inline:24px;}
+
+  header{padding-block:56px 34px;}
+  header h1{margin:0 0 12px;font-size:clamp(28px,4vw,42px);font-weight:600;letter-spacing:-.03em;}
+  header p{margin:0;max-width:60ch;color:var(--page-ink-2);font-size:16px;line-height:1.6;}
+
+  .spec{
+    display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;
+    padding:18px 0 16px;border-top:1px solid var(--page-rule);margin-top:52px;
+  }
+  .spec h2{margin:0;font-size:19px;font-weight:600;letter-spacing:-.02em;}
+  .spec .tag{font-family:ui-monospace,Menlo,monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#6f7a8b;}
+  .spec .why{flex-basis:100%;margin:2px 0 0;color:var(--page-ink-2);font-size:14.5px;line-height:1.6;max-width:78ch;}
+
+  .slice{border:1px solid var(--page-rule);overflow:hidden;margin-bottom:8px;}
+  .band{padding:30px 30px 34px;}
+  .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;}
+  .col{padding:16px 16px 20px;}
+  .kk{font-size:10px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px;}
+  .dd{font-size:13px;line-height:1.5;}
+  .st{font-size:9px;letter-spacing:.15em;text-transform:uppercase;float:right;}
+  .flow{display:flex;gap:8px;align-items:center;padding:22px 30px 26px;flex-wrap:wrap;}
+  .node{flex:1;min-width:92px;text-align:center;padding:12px 6px;font-size:10px;letter-spacing:.13em;text-transform:uppercase;}
+  .arw{font-size:12px;opacity:.5;}
+  .specimen{padding:20px 30px 28px;display:flex;flex-wrap:wrap;gap:8px 30px;align-items:baseline;}
+  .specimen b{font-weight:600;}
+  h3.head{margin:0 0 10px;letter-spacing:-.035em;line-height:1.05;}
+  p.sub{margin:0;font-size:14px;line-height:1.55;max-width:56ch;}
+
+  /* ============ A · INK & BRASS (current) ============ */
+  .tA{background:#0c131d;color:#e8ecf2;font-family:"Instrument Sans",var(--ui);}
+  .tA h3.head{font-size:clamp(26px,3.6vw,40px);font-weight:600;}
+  .tA p.sub{color:#9dabbd;}
+  .tA .cols{background:#17222f;}
+  .tA .col{background:#0c131d;border-top:1px solid #1e2b3b;}
+  .tA .col.open{border-top-color:#c89243;background:linear-gradient(to bottom,rgba(200,146,67,.09),rgba(200,146,67,0) 60%),#0c131d;}
+  .tA .kk,.tA .st{font-family:"JetBrains Mono",monospace;color:#9dabbd;}
+  .tA .col.open .kk,.tA .col.open .st{color:#c89243;}
+  .tA .dd{color:#9dabbd;}
+  .tA .node{font-family:"JetBrains Mono",monospace;border:1px solid #1e2b3b;color:#9dabbd;}
+  .tA .node.j{border-color:#c89243;color:#c89243;background:rgba(200,146,67,.08);}
+  .tA .node.c{border-color:#5d82ad;color:#8fb0d6;background:rgba(93,130,173,.12);}
+  .tA .specimen{color:#9dabbd;font-size:13px;border-top:1px solid #17222f;}
+
+  /* ============ B · PAPER & PRESS ============ */
+  .tB{background:#f4f1e8;color:#1a1713;font-family:"Work Sans",var(--ui);}
+  .tB h3.head{font-family:"Fraunces",Georgia,serif;font-size:clamp(28px,3.9vw,44px);font-weight:600;letter-spacing:-.02em;}
+  .tB p.sub{color:#5d574c;}
+  .tB .cols{background:#d9d2c2;}
+  .tB .col{background:#f4f1e8;border-top:2px solid #1a1713;}
+  .tB .col.open{border-top-color:#a8321f;background:#efe9db;}
+  .tB .kk,.tB .st{font-family:"Fraunces",Georgia,serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:12px;color:#5d574c;}
+  .tB .col.open .kk,.tB .col.open .st{color:#a8321f;}
+  .tB .dd{color:#3f3930;}
+  .tB .node{border:1px solid #1a1713;font-family:"Work Sans",sans-serif;color:#3f3930;}
+  .tB .node.j{background:#a8321f;color:#f4f1e8;border-color:#a8321f;}
+  .tB .node.c{background:#1a1713;color:#f4f1e8;border-color:#1a1713;}
+  .tB .specimen{color:#5d574c;font-size:13px;border-top:1px solid #d9d2c2;}
+
+  /* ============ C · BLUEPRINT ============ */
+  .tC{background:#0a1620;color:#d7e6f2;font-family:"IBM Plex Sans",var(--ui);
+      background-image:linear-gradient(rgba(94,160,214,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(94,160,214,.055) 1px,transparent 1px);
+      background-size:26px 26px;}
+  .tC h3.head{font-family:"IBM Plex Mono",monospace;font-size:clamp(23px,3.1vw,34px);font-weight:500;letter-spacing:-.01em;}
+  .tC p.sub{color:#8aa8c0;}
+  .tC .cols{background:rgba(94,160,214,.18);}
+  .tC .col{background:rgba(10,22,32,.86);border:1px solid rgba(94,160,214,.3);}
+  .tC .col.open{border-color:#7ee0ff;box-shadow:inset 0 0 0 1px rgba(126,224,255,.35);}
+  .tC .kk,.tC .st{font-family:"IBM Plex Mono",monospace;color:#8aa8c0;}
+  .tC .col.open .kk,.tC .col.open .st{color:#7ee0ff;}
+  .tC .dd{color:#a9c2d6;}
+  .tC .node{font-family:"IBM Plex Mono",monospace;border:1px dashed rgba(94,160,214,.5);color:#a9c2d6;}
+  .tC .node.j{border:1px solid #7ee0ff;color:#7ee0ff;}
+  .tC .node.c{border:1px solid #5ea0d6;color:#5ea0d6;}
+  .tC .specimen{color:#8aa8c0;font-size:13px;border-top:1px solid rgba(94,160,214,.2);}
+
+  /* ============ D · INSTRUMENT ============ */
+  .tD{background:#fbfbfc;color:#0d1117;font-family:"Archivo",var(--ui);}
+  .tD h3.head{font-size:clamp(26px,3.7vw,41px);font-weight:700;letter-spacing:-.04em;}
+  .tD p.sub{color:#565f6c;}
+  .tD .cols{background:#e4e7eb;}
+  .tD .col{background:#fbfbfc;border-top:3px solid #0d1117;}
+  .tD .col.open{border-top-color:#1b53ff;}
+  .tD .kk,.tD .st{font-family:"JetBrains Mono",monospace;color:#6b7280;}
+  .tD .col.open .kk,.tD .col.open .st{color:#1b53ff;}
+  .tD .dd{color:#3d4551;}
+  .tD .node{border:1px solid #d3d8de;font-family:"JetBrains Mono",monospace;color:#565f6c;border-radius:2px;}
+  .tD .node.j{border-color:#1b53ff;color:#1b53ff;background:rgba(27,83,255,.06);}
+  .tD .node.c{border-color:#0d1117;color:#0d1117;}
+  .tD .specimen{color:#565f6c;font-size:13px;border-top:1px solid #e4e7eb;}
+
+  /* ============ E · TERRAIN ============ */
+  .tE{background:#17150f;color:#ece6d8;font-family:"Karla",var(--ui);}
+  .tE h3.head{font-family:"Newsreader",Georgia,serif;font-size:clamp(28px,4vw,45px);font-weight:400;letter-spacing:-.018em;}
+  .tE p.sub{color:#a49c87;}
+  .tE .cols{background:#2a271c;}
+  .tE .col{background:#17150f;border-top:1px solid #3a3527;}
+  .tE .col.open{border-top-color:#b8874a;background:linear-gradient(to bottom,rgba(184,135,74,.1),rgba(184,135,74,0) 62%),#17150f;}
+  .tE .kk,.tE .st{font-family:"Karla",sans-serif;color:#a49c87;}
+  .tE .col.open .kk,.tE .col.open .st{color:#c79a5e;}
+  .tE .dd{color:#a49c87;}
+  .tE .node{border:1px solid #3a3527;color:#a49c87;border-radius:999px;}
+  .tE .node.j{border-color:#b8874a;color:#c79a5e;}
+  .tE .node.c{border-color:#7d9070;color:#9cb08c;}
+  .tE .specimen{color:#a49c87;font-size:13px;border-top:1px solid #2a271c;}
+
+  .heroart{display:block;width:100%;height:150px;}
+
+  @media (max-width:760px){
+    .cols{grid-template-columns:1fr;}
+    .band{padding:22px 20px 26px;}
+    .flow{padding:18px 20px;}
+    .specimen{padding:16px 20px 22px;}
+  }
+</style>
+
+<div class="shell">
+  <header>
+    <h1>Five visual treatments</h1>
+    <p>Same layout, same copy, same structure. Only type, colour and illustration language change. Each slice shows a hero, the three-column gap block, the loop as it would be drawn, and a type specimen.</p>
+  </header>
+
+  <!-- ===================== A ===================== -->
+  <div class="spec">
+    <h2>A · Ink &amp; Brass</h2>
+    <span class="tag">current</span>
+    <p class="why">Ink navy, slate and brass. Instrument Sans with JetBrains Mono. Illustration is a generative field of completing cells. Confident and technical; the risk is that dark-plus-accent is the current house style of the whole category.</p>
+  </div>
+  <div class="slice tA">
+    <svg class="heroart" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#5d82ad">
+        <rect x="20" y="20" width="12" height="12" opacity=".30"/><rect x="42" y="20" width="12" height="12" opacity=".22"/><rect x="64" y="20" width="12" height="12" opacity=".16"/><rect x="86" y="20" width="12" height="12" opacity=".28"/><rect x="108" y="20" width="12" height="12" opacity=".12"/><rect x="130" y="20" width="12" height="12" opacity=".26"/><rect x="152" y="20" width="12" height="12" opacity=".18"/><rect x="174" y="20" width="12" height="12" opacity=".30"/><rect x="196" y="20" width="12" height="12" opacity=".14"/><rect x="218" y="20" width="12" height="12" opacity=".24"/>
+        <rect x="20" y="42" width="12" height="12" opacity=".20"/><rect x="42" y="42" width="12" height="12" opacity=".30"/><rect x="64" y="42" width="12" height="12" opacity=".12"/><rect x="108" y="42" width="12" height="12" opacity=".26"/><rect x="130" y="42" width="12" height="12" opacity=".18"/><rect x="152" y="42" width="12" height="12" opacity=".28"/><rect x="174" y="42" width="12" height="12" opacity=".16"/><rect x="196" y="42" width="12" height="12" opacity=".22"/><rect x="218" y="42" width="12" height="12" opacity=".30"/>
+        <rect x="20" y="64" width="12" height="12" opacity=".26"/><rect x="42" y="64" width="12" height="12" opacity=".14"/><rect x="64" y="64" width="12" height="12" opacity=".28"/><rect x="86" y="64" width="12" height="12" opacity=".20"/><rect x="108" y="64" width="12" height="12" opacity=".30"/><rect x="152" y="64" width="12" height="12" opacity=".22"/><rect x="174" y="64" width="12" height="12" opacity=".12"/><rect x="196" y="64" width="12" height="12" opacity=".26"/><rect x="218" y="64" width="12" height="12" opacity=".18"/>
+      </g>
+      <g fill="none" stroke="#c89243" stroke-width="1"><rect x="86.5" y="42.5" width="11" height="11"/><rect x="130.5" y="64.5" width="11" height="11"/></g>
+    </svg>
+    <div class="band">
+      <h3 class="head">The work is getting automated.<br>The judgment isn&rsquo;t.</h3>
+      <p class="sub">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does.</p>
+    </div>
+    <div class="cols">
+      <div class="col"><span class="st">Funded</span><div class="kk">Applied AI</div><div class="dd">Existing models, deployed into existing businesses.</div></div>
+      <div class="col open"><span class="st">Unclaimed</span><div class="kk">Judgment</div><div class="dd">The models, methods and priors a machine needs to decide inside a field.</div></div>
+      <div class="col"><span class="st">Funded</span><div class="kk">AI research</div><div class="dd">Extending what those models can do.</div></div>
+    </div>
+    <div class="flow">
+      <div class="node c">Context</div><span class="arw">&rarr;</span><div class="node j">Selection</div><span class="arw">&rarr;</span><div class="node j">Diagnosis</div><span class="arw">&rarr;</span><div class="node j">Strategy</div><span class="arw">&rarr;</span><div class="node">Execution</div>
+    </div>
+    <div class="specimen"><span>Instrument Sans <b>Semibold</b> / Regular</span><span style="font-family:'JetBrains Mono',monospace">JetBrains Mono</span><span>#0c131d · #5d82ad · #c89243</span></div>
+  </div>
+
+  <!-- ===================== B ===================== -->
+  <div class="spec">
+    <h2>B · Paper &amp; Press</h2>
+    <span class="tag">editorial</span>
+    <p class="why">Warm paper, near-black ink, one oxblood. Fraunces with Work Sans. Illustration is letterpress rules and halftone fields. Reads as a research institute that publishes, not a startup. The furthest from the category, and the biggest bet.</p>
+  </div>
+  <div class="slice tB">
+    <svg class="heroart" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="#1a1713">
+        <circle cx="30" cy="34" r="4.5" opacity=".9"/><circle cx="56" cy="34" r="4" opacity=".75"/><circle cx="82" cy="34" r="3.4" opacity=".6"/><circle cx="108" cy="34" r="2.8" opacity=".45"/><circle cx="134" cy="34" r="2.2" opacity=".3"/><circle cx="160" cy="34" r="1.6" opacity=".2"/>
+        <circle cx="30" cy="60" r="4" opacity=".75"/><circle cx="56" cy="60" r="3.4" opacity=".6"/><circle cx="82" cy="60" r="2.8" opacity=".45"/><circle cx="108" cy="60" r="2.2" opacity=".3"/><circle cx="134" cy="60" r="1.6" opacity=".22"/>
+        <circle cx="30" cy="86" r="3.4" opacity=".6"/><circle cx="56" cy="86" r="2.8" opacity=".45"/><circle cx="82" cy="86" r="2.2" opacity=".32"/><circle cx="108" cy="86" r="1.6" opacity=".22"/>
+      </g>
+      <g stroke="#a8321f" stroke-width="1.4" fill="none"><path d="M200 34h660M200 60h520M200 86h380"/></g>
+      <circle cx="560" cy="60" r="6" fill="#a8321f"/>
+    </svg>
+    <div class="band">
+      <h3 class="head">The work is getting automated.<br>The judgment isn&rsquo;t.</h3>
+      <p class="sub">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does.</p>
+    </div>
+    <div class="cols">
+      <div class="col"><span class="st">Funded</span><div class="kk">Applied AI</div><div class="dd">Existing models, deployed into existing businesses.</div></div>
+      <div class="col open"><span class="st">Unclaimed</span><div class="kk">Judgment</div><div class="dd">The models, methods and priors a machine needs to decide inside a field.</div></div>
+      <div class="col"><span class="st">Funded</span><div class="kk">AI research</div><div class="dd">Extending what those models can do.</div></div>
+    </div>
+    <div class="flow">
+      <div class="node c">Context</div><span class="arw">&rarr;</span><div class="node j">Selection</div><span class="arw">&rarr;</span><div class="node j">Diagnosis</div><span class="arw">&rarr;</span><div class="node j">Strategy</div><span class="arw">&rarr;</span><div class="node">Execution</div>
+    </div>
+    <div class="specimen"><span style="font-family:Fraunces,Georgia,serif">Fraunces <b>Semibold</b></span><span>Work Sans Regular</span><span>#f4f1e8 · #1a1713 · #a8321f</span></div>
+  </div>
+
+  <!-- ===================== C ===================== -->
+  <div class="spec">
+    <h2>C · Blueprint</h2>
+    <span class="tag">technical drawing</span>
+    <p class="why">Deep blue-black on a drafting grid, cyan line work, IBM Plex Mono leading. Illustration is orthographic line art with dimension marks and hatching. Signals engineering rigour; risk is that it reads as a devtool.</p>
+  </div>
+  <div class="slice tC">
+    <svg class="heroart" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#5ea0d6" stroke-width="1" fill="none" opacity=".75">
+        <rect x="30" y="28" width="150" height="84"/>
+        <path d="M30 28l40-18h150l-40 18M180 28l40-18v84l-40 18"/>
+        <path d="M30 120h150" stroke-dasharray="3 3"/><path d="M30 116v8M180 116v8"/>
+      </g>
+      <g stroke="#7ee0ff" stroke-width="1.2" fill="none">
+        <rect x="300" y="44" width="70" height="52"/><rect x="400" y="44" width="70" height="52"/>
+        <path d="M370 70h30M470 70h40" marker-end=""/><path d="M505 66l6 4-6 4"/>
+      </g>
+      <g stroke="#5ea0d6" stroke-width=".8" opacity=".45">
+        <path d="M560 40l20 20M575 40l20 20M590 40l20 20M605 40l20 20M620 40l20 20M635 40l20 20M650 40l20 20"/>
+      </g>
+      <text x="300" y="118" font-family="IBM Plex Mono, monospace" font-size="8" letter-spacing="1.4" fill="#5ea0d6">FIG. 1 — DECISION PATH</text>
+    </svg>
+    <div class="band">
+      <h3 class="head">The work is getting automated.<br>The judgment isn&rsquo;t.</h3>
+      <p class="sub">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does.</p>
+    </div>
+    <div class="cols">
+      <div class="col"><span class="st">Funded</span><div class="kk">Applied AI</div><div class="dd">Existing models, deployed into existing businesses.</div></div>
+      <div class="col open"><span class="st">Unclaimed</span><div class="kk">Judgment</div><div class="dd">The models, methods and priors a machine needs to decide inside a field.</div></div>
+      <div class="col"><span class="st">Funded</span><div class="kk">AI research</div><div class="dd">Extending what those models can do.</div></div>
+    </div>
+    <div class="flow">
+      <div class="node c">Context</div><span class="arw">&rarr;</span><div class="node j">Selection</div><span class="arw">&rarr;</span><div class="node j">Diagnosis</div><span class="arw">&rarr;</span><div class="node j">Strategy</div><span class="arw">&rarr;</span><div class="node">Execution</div>
+    </div>
+    <div class="specimen"><span style="font-family:'IBM Plex Mono',monospace">IBM Plex Mono <b>Medium</b></span><span>IBM Plex Sans</span><span>#0a1620 · #5ea0d6 · #7ee0ff</span></div>
+  </div>
+
+  <!-- ===================== D ===================== -->
+  <div class="spec">
+    <h2>D · Instrument</h2>
+    <span class="tag">light, clinical</span>
+    <p class="why">Near-white, cool neutrals, one saturated signal blue used sparingly. Archivo, heavy and tight. Illustration is the plot itself — distributions, scatter, small multiples. Feels like a scientific instrument; the least like a marketing page of the five.</p>
+  </div>
+  <div class="slice tD">
+    <svg class="heroart" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
+      <g stroke="#d3d8de" stroke-width="1"><path d="M30 118h250M30 118V26"/></g>
+      <path d="M30 108c40 0 44-66 95-66s55 66 95 66" fill="none" stroke="#0d1117" stroke-width="1.6"/>
+      <path d="M30 112c34 0 48-40 82-40s48 40 82 40" fill="none" stroke="#1b53ff" stroke-width="1.6" opacity=".9"/>
+      <g fill="#0d1117">
+        <circle cx="360" cy="92" r="2.6"/><circle cx="392" cy="80" r="2.6"/><circle cx="424" cy="84" r="2.6"/><circle cx="456" cy="66" r="2.6"/><circle cx="488" cy="72" r="2.6"/><circle cx="520" cy="54" r="2.6"/><circle cx="552" cy="60" r="2.6"/><circle cx="584" cy="44" r="2.6"/>
+      </g>
+      <circle cx="616" cy="38" r="4" fill="#1b53ff"/>
+      <path d="M350 118h290" stroke="#d3d8de"/>
+      <g stroke="#d3d8de"><path d="M700 34v84M700 118h170"/></g>
+      <g fill="#1b53ff" opacity=".22"><rect x="712" y="88" width="14" height="30"/><rect x="734" y="72" width="14" height="46"/><rect x="756" y="58" width="14" height="60"/><rect x="778" y="66" width="14" height="52"/><rect x="800" y="46" width="14" height="72"/><rect x="822" y="80" width="14" height="38"/></g>
+    </svg>
+    <div class="band">
+      <h3 class="head">The work is getting automated.<br>The judgment isn&rsquo;t.</h3>
+      <p class="sub">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does.</p>
+    </div>
+    <div class="cols">
+      <div class="col"><span class="st">Funded</span><div class="kk">Applied AI</div><div class="dd">Existing models, deployed into existing businesses.</div></div>
+      <div class="col open"><span class="st">Unclaimed</span><div class="kk">Judgment</div><div class="dd">The models, methods and priors a machine needs to decide inside a field.</div></div>
+      <div class="col"><span class="st">Funded</span><div class="kk">AI research</div><div class="dd">Extending what those models can do.</div></div>
+    </div>
+    <div class="flow">
+      <div class="node c">Context</div><span class="arw">&rarr;</span><div class="node j">Selection</div><span class="arw">&rarr;</span><div class="node j">Diagnosis</div><span class="arw">&rarr;</span><div class="node j">Strategy</div><span class="arw">&rarr;</span><div class="node">Execution</div>
+    </div>
+    <div class="specimen"><span>Archivo <b>Bold</b> / Regular</span><span style="font-family:'JetBrains Mono',monospace">JetBrains Mono</span><span>#fbfbfc · #0d1117 · #1b53ff</span></div>
+  </div>
+
+  <!-- ===================== E ===================== -->
+  <div class="spec">
+    <h2>E · Terrain</h2>
+    <span class="tag">warm, organic</span>
+    <p class="why">Charcoal-brown ground, ochre and sage. Newsreader with Karla. Illustration is contour lines — the landscape of possible strategies, with the chosen path traced across it. Human and unhurried; the least AI-looking, at some cost in technical authority.</p>
+  </div>
+  <div class="slice tE">
+    <svg class="heroart" viewBox="0 0 900 150" preserveAspectRatio="none" aria-hidden="true">
+      <g fill="none" stroke="#7d9070" stroke-width="1" opacity=".55">
+        <path d="M0 122c120-6 180-46 300-46s200 40 320 40 180-26 280-30"/>
+        <path d="M0 104c120-6 190-40 310-40s190 34 310 34 180-22 280-26"/>
+        <path d="M0 86c130-6 200-34 320-34s180 28 300 28 190-18 280-22"/>
+        <path d="M0 68c140-6 210-28 330-28s170 22 290 22 200-14 280-18"/>
+        <path d="M0 50c150-6 220-22 340-22s160 16 280 16 210-10 280-14"/>
+      </g>
+      <path d="M40 130C190 118 250 66 400 58s250 18 430-6" fill="none" stroke="#b8874a" stroke-width="1.8"/>
+      <circle cx="400" cy="58" r="4.5" fill="#17150f" stroke="#c79a5e" stroke-width="1.6"/>
+    </svg>
+    <div class="band">
+      <h3 class="head">The work is getting automated.<br>The judgment isn&rsquo;t.</h3>
+      <p class="sub">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does.</p>
+    </div>
+    <div class="cols">
+      <div class="col"><span class="st">Funded</span><div class="kk">Applied AI</div><div class="dd">Existing models, deployed into existing businesses.</div></div>
+      <div class="col open"><span class="st">Unclaimed</span><div class="kk">Judgment</div><div class="dd">The models, methods and priors a machine needs to decide inside a field.</div></div>
+      <div class="col"><span class="st">Funded</span><div class="kk">AI research</div><div class="dd">Extending what those models can do.</div></div>
+    </div>
+    <div class="flow">
+      <div class="node c">Context</div><span class="arw">&rarr;</span><div class="node j">Selection</div><span class="arw">&rarr;</span><div class="node j">Diagnosis</div><span class="arw">&rarr;</span><div class="node j">Strategy</div><span class="arw">&rarr;</span><div class="node">Execution</div>
+    </div>
+    <div class="specimen"><span style="font-family:Newsreader,Georgia,serif">Newsreader <b>Regular</b></span><span>Karla</span><span>#17150f · #b8874a · #7d9070</span></div>
+  </div>
+
+  <div style="height:64px"></div>
+</div>
