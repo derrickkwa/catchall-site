@@ -4,362 +4,318 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>CatchAll — The AI decision layer trained on real feedback</title>
-<meta name="description" content="CatchAll is the AI decision layer trained on real feedback. Every decision is forecast with a stated confidence, sealed before the outcome, and graded against doing nothing.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M24.4 8.9A11 11 0 1 0 24.4 23.1' fill='none' stroke='%230d1117' stroke-width='5'/%3E%3Ccircle cx='16' cy='16' r='3.8' fill='%231b53ff'/%3E%3C/svg%3E">
+<title>CatchAll — We're compressing growth</title>
+<meta name="description" content="CatchAll is the decision layer that runs a company's growth calls, starting with marketing. Agents do the work. CatchAll makes the decisions.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101214'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23fe6a34'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<script>document.documentElement.classList.add('js');</script>
 
 <!--
-  Contact address: hello@catchall.com appears in four places (header, invite, footer link + text).
-  To swap it, find-and-replace that one string across this file.
+  Stealth page. Visual system and story follow the Series A deck (Team Flow, Oct 2026):
+  near-black and warm cream sections, one orange accent, Inter set tight.
+  The context layer, the loop and the research carry over from the previous site.
+  Contact address hello@catchall.com appears twice: the invite button and the footer.
 -->
 
 <style>
-  /* CatchAll brand kit v1.0 — ink and paper, with one blue moment */
   :root{
-    --ink:#0d1117;
-    --ink-raised:#1c2129;
-    --paper:#fbfbfc;
-    --mist:#f2f4f7;
-    --line-soft:#e7eaee;
-    --line:#d3d8de;
-    --slate:#8a929e;
-    --graphite:#565f6c;
-    --blue:#1b53ff;
-    --blue-hover:#0b3ae0;
-    --blue-light:#7c9bff;
-    --brass:#a17c3c;
-    --brass-dark:#8a6b2e;
-    --radius:8px;
-    --gutter:clamp(16px,4vw,28px);
-    --sans:"Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-    --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --night:#101214;
+    --night-raised:#1a1c20;
+    --night-line:#2a2d32;
+    --cream:#f2efe7;
+    --cream-raised:#f8f6f1;
+    --cream-line:#dcd7cb;
+    --bone:#f2efe7;
+    --ink:#141619;
+    --ash:#9b978e;
+    --stone:#5e5a53;
+    --ember:#fe6a34;       /* accent on dark */
+    --rust:#c34519;        /* accent on cream */
+    --gutter:clamp(16px,5vw,64px);
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   }
 
   *,*::before,*::after{box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--sans);font-size:17px;line-height:1.6;
+    margin:0;background:var(--night);color:var(--bone);
+    font-family:var(--sans);font-size:17px;line-height:1.55;
     -webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
-  .wrap{max-width:1200px;margin:0 auto;padding-inline:var(--gutter);}
+  .wrap{max-width:1180px;margin:0 auto;padding-inline:var(--gutter);}
+
+  /* ---------- themes ---------- */
+  .dark{background:var(--night);color:var(--bone);--fg:var(--bone);--acc:var(--ember);--muted:var(--ash);--line:var(--night-line);--raised:var(--night-raised);}
+  .light{background:var(--cream);color:var(--ink);--fg:var(--ink);--acc:var(--rust);--muted:var(--stone);--line:var(--cream-line);--raised:var(--cream-raised);}
+  .orange{background:var(--ember);color:var(--ink);--fg:var(--ink);--acc:var(--ink);--muted:rgba(20,22,25,.72);--line:rgba(20,22,25,.25);}
 
   /* ---------- type ---------- */
-  h1,h2,h3{font-weight:700;text-wrap:balance;margin:0;}
-  h2{font-size:clamp(26px,3.6vw,36px);letter-spacing:-.032em;line-height:1.14;max-width:30ch;margin-bottom:18px;}
-  h3{font-size:20px;letter-spacing:-.022em;line-height:1.26;}
-  p{margin:0 0 16px;max-width:66ch;color:var(--graphite);}
-  p:last-child{margin-bottom:0;}
-  p.lead{color:var(--ink);font-size:18px;}
-  em{font-style:normal;color:var(--ink);}
-  .eyebrow,.label{
-    font-family:var(--mono);font-weight:500;text-transform:uppercase;
-    letter-spacing:.16em;font-size:11px;
-  }
-  .eyebrow{color:var(--blue);margin-bottom:14px;display:block;}
-  .label{color:var(--slate);font-size:10.5px;}
+  h1,h2,h3{margin:0;font-weight:700;text-wrap:pretty;}
+  h2{font-size:clamp(32px,4.6vw,54px);letter-spacing:-.045em;line-height:1.04;}
+  /* Headings break at the sentence on wide screens, like the deck; phones wrap naturally */
+  @media (max-width:640px){br.d{display:none;} h2{text-wrap:balance;}}
+  h3{font-size:20px;letter-spacing:-.025em;line-height:1.2;}
+  p{margin:0;max-width:62ch;text-wrap:pretty;}
+  .acc{color:var(--acc);}
+  .q{display:block;color:var(--acc);font-weight:600;font-size:15px;letter-spacing:-.01em;margin-bottom:18px;}
+  .label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+  .lead{max-width:none;margin-top:22px;font-size:clamp(18px,1.6vw,20px);line-height:1.5;color:var(--muted);letter-spacing:-.01em;}
+  .kicker{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);font-size:clamp(18px,1.7vw,21px);font-weight:600;letter-spacing:-.02em;line-height:1.35;max-width:none;}
 
-  /* ---------- logo ---------- */
-  .logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:inherit;}
-  .logo svg{width:26px;height:26px;display:block;}
-  .logo span{font-weight:700;font-size:20px;letter-spacing:-.03em;}
+  section{padding-block:clamp(72px,10vw,128px);}
 
-  /* ---------- hero (cover) ---------- */
-  .hero{background:var(--ink);color:#fff;position:relative;overflow:hidden;}
-  .hero-ring{
-    position:absolute;right:-6vw;top:50%;transform:translateY(-50%);
-    width:min(620px,62vw);height:auto;pointer-events:none;
-  }
-  .topbar{position:relative;display:flex;align-items:center;justify-content:space-between;padding-block:26px;}
-  .topbar a.mail{
-    font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--blue-light);text-decoration:none;
-  }
-  .topbar a.mail:hover{color:#fff;}
-  .hero-copy{position:relative;padding-block:clamp(70px,11vw,140px) clamp(70px,9vw,120px);}
-  .hero .eyebrow{color:var(--blue-light);}
-  .hero h1{font-size:clamp(40px,7vw,80px);letter-spacing:-.045em;line-height:1.02;max-width:13ch;}
-  .category{
-    margin:22px 0 0;max-width:30ch;color:#fff;
-    font-size:clamp(20px,2.4vw,26px);line-height:1.3;letter-spacing:-.018em;font-weight:500;
-  }
-  .hero-note{margin:22px 0 0;max-width:50ch;color:var(--slate);font-size:16px;line-height:1.55;}
-  .hero-rule{position:relative;border-top:1px solid #2a303a;padding-block:16px 22px;}
-  .hero-rule .label{color:var(--slate);}
+  .wordmark{font-weight:800;font-size:22px;letter-spacing:-.045em;color:inherit;text-decoration:none;}
+  .wordmark i{font-style:normal;color:var(--ember);}
 
-  /* ---------- rhythm ---------- */
-  section{padding-block:clamp(56px,7vw,88px);border-bottom:1px solid var(--line-soft);}
-  section:last-of-type{border-bottom:0;}
-  .split-row{display:grid;grid-template-columns:1.04fr 1fr;gap:60px;align-items:start;}
-  .split-row h2{margin-bottom:0;}
-  .split-row p{max-width:none;}
-  .beat{margin:22px 0 0;max-width:none;color:var(--ink);font-size:19px;letter-spacing:-.012em;font-weight:500;}
-  .split-row.second{margin-top:56px;padding-top:44px;border-top:1px solid var(--line-soft);}
+  .card{border:1px solid var(--line);background:var(--raised);border-radius:8px;padding:24px 24px 26px;}
 
-  /* ---------- cards ---------- */
-  .card{background:var(--mist);border:1px solid var(--line-soft);border-radius:var(--radius);padding:24px 24px 26px;}
-  .card.blue{background:var(--blue);border-color:var(--blue);color:#fff;}
-  .card.blue p,.card.blue .label{color:rgba(255,255,255,.86);}
-  .card.ink{background:var(--ink);border-color:var(--ink);color:#fff;}
-  .card.ink p{color:#b4bac3;}
-  .card.ink .label{color:var(--blue-light);}
-
-  /* ---------- the three tracks ---------- */
-  .tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .track{display:flex;flex-direction:column;gap:12px;}
-  .track h3{font-size:22px;}
-  .track p{font-size:15.5px;line-height:1.55;}
-  .after-tracks{margin:30px 0 0;max-width:none;}
-
-  /* ---------- engine ---------- */
-  .builds{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;align-items:stretch;}
-  .build{display:flex;flex-direction:column;}
-  .build .after{margin-top:auto;padding-top:22px;}
-  .build > .label{display:block;margin-bottom:10px;}
-  .build.context > .label{color:var(--brass-dark);}
-  .build.research > .label{color:var(--blue);}
-  .build h3{margin-bottom:10px;}
-  .build > p{font-size:16px;line-height:1.62;}
-  .parts{margin-top:18px;border-top:1px solid var(--line);}
-  .part{display:grid;grid-template-columns:24px 1fr;gap:4px 16px;padding-block:15px;border-bottom:1px solid var(--line);}
-  .part:last-child{border-bottom:0;padding-bottom:0;}
-  .part-icon{grid-row:1 / span 2;padding-top:1px;color:var(--brass);}
-  .research .part-icon{color:var(--blue);}
-  .part-icon svg{display:block;width:22px;height:22px;}
-  .part-k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);}
-  .part-v{color:var(--graphite);font-size:14.5px;line-height:1.56;}
-
-  details.more{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;}
+  details.more{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;}
   details.more summary{
     cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;
-    font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.12em;
-    text-transform:uppercase;color:var(--blue);
+    font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);
   }
   details.more summary::-webkit-details-marker{display:none;}
-  details.more summary::before{content:"+";font-size:15px;line-height:1;width:14px;}
-  details.more[open] summary::before{content:"−";}
-  .context details.more summary{color:var(--brass-dark);}
-  details.more summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+  details.more summary::before{content:"+";font-size:16px;line-height:1;width:14px;}
+  details.more[open] summary::before{content:"\2212";}
+  details.more summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px;}
   .more-list{list-style:none;margin:12px 0 0;padding:0;}
-  .more-list li{padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px;line-height:1.55;color:var(--graphite);}
+  .more-list li{padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55;color:var(--muted);}
   .more-list li:last-child{border-bottom:0;}
-  .more-list b{font-weight:600;color:var(--ink);}
+  .more-list b{font-weight:600;color:var(--fg);}
+
+  /* ---------- hero ---------- */
+  .hero{padding-block:30px clamp(72px,10vw,120px);}
+  .hero .topbar{display:flex;justify-content:space-between;align-items:center;}
+  .hero .q{margin:clamp(72px,12vw,150px) 0 26px;}
+  .compress{display:grid;grid-template-columns:1fr 150px 170px;column-gap:24px;}
+  .compress .head{padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .compress .row{display:contents;}
+  .compress .row > *{padding-block:18px;border-bottom:1px solid var(--line);display:flex;align-items:center;}
+  .compress .claim{font-size:clamp(26px,3.7vw,44px);font-weight:700;letter-spacing:-.05em;line-height:1.05;}
+  .compress .cell{font-size:17px;color:var(--ash);}
+  .compress .row.ours > *{color:var(--ember);}
+  .compress .row.ours .cell{font-weight:600;}
+  .hero .sub{margin-top:36px;font-size:clamp(18px,1.7vw,21px);color:var(--ash);max-width:none;line-height:1.45;letter-spacing:-.012em;}
+  .hero .sub b{color:var(--bone);font-weight:600;white-space:nowrap;}
+
+  /* ---------- the shift ---------- */
+  .flow{margin-top:52px;display:grid;grid-template-columns:120px 1fr 28px 1fr 28px 1fr;gap:14px 10px;align-items:center;}
+  .flow .label.acc{color:var(--acc);}
+  .step{border:1px solid var(--line);background:var(--raised);border-radius:6px;padding:15px 18px;font-weight:600;font-size:16px;letter-spacing:-.015em;}
+  .step.human{background:var(--ink);border-color:var(--ink);color:var(--cream);}
+  .step.human.watch{color:var(--ember);}
+  .step.agent{background:transparent;border-style:dashed;color:var(--stone);}
+  .arrow{color:var(--stone);text-align:center;font-size:18px;}
+  .split{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;}
+  .split p.note{color:var(--muted);font-size:15.5px;font-weight:400;letter-spacing:0;line-height:1.55;}
+
+  /* ---------- context layer ---------- */
+  .context{margin-top:52px;display:grid;grid-template-columns:.9fr 1.1fr;gap:20px 56px;}
+  .context-intro .label{color:var(--acc);margin-bottom:14px;}
+  .context-intro h3{font-size:clamp(24px,2.6vw,30px);letter-spacing:-.035em;line-height:1.12;}
+  .context-intro p{margin-top:14px;color:var(--muted);}
+  .parts{border-top:1px solid var(--line);}
+  .part{display:grid;grid-template-columns:24px 1fr;gap:4px 16px;padding-block:16px;border-bottom:1px solid var(--line);}
+  .part-icon{grid-row:1 / span 2;padding-top:1px;color:var(--acc);}
+  .part-icon svg{display:block;width:22px;height:22px;}
+  .part-k{font-size:15.5px;font-weight:600;letter-spacing:-.015em;}
+  .part-v{color:var(--muted);font-size:15px;line-height:1.55;}
+  .context details.more{border-top:0;margin-top:6px;}
 
   /* ---------- the loop ---------- */
-  .loop{margin:44px 0 0;border-top:1px solid var(--line);padding-top:24px;}
+  .loop{margin:52px 0 0;}
   .loop svg{display:block;width:100%;max-width:1000px;height:auto;margin-inline:auto;}
   .loop-key{display:flex;gap:26px;flex-wrap:wrap;justify-content:center;margin-bottom:26px;}
-  .loop-key span{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite);}
-  .loop-key i{width:11px;height:11px;border:1px solid var(--line);display:block;}
-  .loop-key .open{color:var(--blue);}
-  .loop-key .open i{border-color:var(--blue);background:rgba(27,83,255,.16);}
-  .loop-key .building{color:var(--brass-dark);}
-  .loop-key .building i{border-color:var(--brass);background:rgba(161,124,60,.18);}
+  .loop-key span{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);}
+  .loop-key i{width:12px;height:12px;border-radius:2px;display:block;border:1px solid #b9b3a6;}
+  .loop-key .building{color:var(--rust);}
+  .loop-key .building i{border:1px dashed var(--rust);background:rgba(195,69,25,.06);}
+  .loop-key .research{color:var(--rust);}
+  .loop-key .research i{border-color:var(--rust);background:var(--rust);}
   .loop-list{display:none;}
-  .loop figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--graphite);margin:16px auto 0;max-width:90ch;text-align:center;line-height:1.7;}
+  .loop figcaption{font-size:14.5px;color:var(--stone);margin:20px auto 0;max-width:72ch;text-align:center;line-height:1.6;}
 
-  /* ---------- first result ---------- */
-  .placeholder-chip{
-    display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--brass-dark);border:1px solid var(--brass);border-radius:4px;padding:3px 8px;margin-left:10px;vertical-align:middle;
-  }
-  .result{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;margin-top:28px;align-items:stretch;}
-  .result-steps{display:flex;flex-direction:column;}
-  .result-step{display:grid;grid-template-columns:34px 1fr;gap:4px 14px;padding:18px 0;border-top:1px solid var(--line);}
-  .result-step:last-child{border-bottom:1px solid var(--line);}
-  .result-step .n{grid-row:1 / span 2;font-family:var(--mono);font-size:11px;color:var(--blue);padding-top:3px;}
-  .result-step .k{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
-  .result-step .v{font-size:17px;line-height:1.45;color:var(--ink);font-weight:500;}
-  .result-step.scored .v{color:var(--blue);}
-  .chart-card{display:flex;flex-direction:column;gap:14px;}
-  .chart-card svg{display:block;width:100%;height:auto;}
-  .chart-legend{display:flex;flex-wrap:wrap;gap:8px 20px;}
-  .chart-legend span{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--graphite);}
-  .chart-legend i{display:block;width:18px;height:0;border-top:2px solid var(--ink);}
-  .chart-legend .band i{border-top:8px solid var(--slate);opacity:.35;}
-  .chart-legend .seal i{border-top:1px dashed var(--ink);}
-
-  /* ---------- why we can ---------- */
-  .why{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
-  .why .card.blue h3{font-size:clamp(22px,2.4vw,28px);line-height:1.2;margin:12px 0 12px;}
-  .stages{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
-  .stage{border-top:1px solid var(--line);padding-top:12px;}
-  .stage .label{color:var(--blue);}
-  .stage b{display:block;margin:6px 0 4px;font-size:15.5px;}
-  .stage > span:not(.label){font-size:14px;color:var(--graphite);line-height:1.5;}
-  .placeholder{border:1px dashed var(--slate);border-radius:var(--radius);padding:20px 22px;background:transparent;}
-  .placeholder p{font-size:15px;}
-
-  /* ---------- trajectory ---------- */
-  .seq{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;}
-  .seq-step{position:relative;border-top:1px solid var(--line);padding:24px 16px 0 0;}
-  .seq-step::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--paper);border:1px solid var(--slate);}
-  .seq-step.now{border-top-color:var(--blue);}
-  .seq-step.now::before{background:var(--blue);border-color:var(--blue);}
-  .seq-k{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--slate);}
-  .seq-step.now .seq-k{color:var(--blue);}
-  .seq-n{font-size:14px;color:var(--slate);margin-top:7px;line-height:1.5;}
-  .seq-step.now .seq-n{color:var(--graphite);}
+  /* ---------- the research ---------- */
+  .three{margin-top:52px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .three .card{display:flex;flex-direction:column;gap:8px;}
+  .three .card h3{color:var(--acc);font-size:24px;}
+  .three .card > p{color:var(--fg);font-size:15.5px;line-height:1.5;}
+  .three .approach{margin-top:12px;padding-top:16px;border-top:1px solid var(--line);}
+  .three .approach .label{color:var(--acc);margin-bottom:6px;}
+  .three .approach b{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.015em;margin-bottom:4px;}
+  .three .approach p{color:var(--muted);font-size:14.5px;line-height:1.55;}
+  .three-wrap{margin-top:14px;}
+  .three-wrap details.more{border-top:0;}
 
   /* ---------- team ---------- */
-  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 24px;margin-top:28px;}
-  .person{display:grid;grid-template-columns:84px 1fr;gap:18px;align-items:center;}
-  .photo{
-    width:84px;height:84px;border-radius:50%;border:1px dashed var(--line);background:var(--mist);
-    display:grid;place-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--slate);
-  }
-  .person b{display:block;font-size:19px;letter-spacing:-.02em;}
-  .person .label{display:block;margin:4px 0 6px;}
-  .person p{font-size:14.5px;line-height:1.5;}
-  .advisory{margin-top:48px;padding-top:32px;border-top:1px solid var(--line-soft);}
-  .advisory h3{margin-bottom:6px;}
-  .team.small .person{grid-template-columns:60px 1fr;}
-  .team.small .photo{width:60px;height:60px;}
-  .team.small .person b{font-size:17px;}
+  .stats{margin-top:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .stat{border-top:1px solid var(--line);padding-top:18px;}
+  .stat:first-child{border-top-color:var(--acc);}
+  .stat b{display:block;font-size:clamp(36px,4.4vw,52px);letter-spacing:-.05em;line-height:1;font-weight:700;}
+  .stat:first-child b{color:var(--acc);}
+  .stat span{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4;}
+  .people{margin-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:20px 56px;}
+  .people > div > .label{color:var(--acc);padding-bottom:12px;border-bottom:1px solid var(--line);}
+  .person{padding-block:14px;border-bottom:1px solid var(--line);}
+  .person b{display:block;font-size:17px;font-weight:600;letter-spacing:-.02em;}
+  .person span{display:block;margin-top:3px;font-size:14.5px;color:var(--muted);line-height:1.45;}
+  .also{margin-top:28px;font-size:14.5px;color:var(--muted);max-width:none;}
+  .also b{font-weight:600;color:var(--fg);}
 
-  /* ---------- invite (closing cover) ---------- */
-  .invite{background:var(--ink);color:#fff;position:relative;overflow:hidden;border-bottom:0;}
-  .invite .eyebrow{color:var(--blue-light);}
-  .invite h2{font-size:clamp(34px,5.6vw,60px);letter-spacing:-.045em;line-height:1.04;max-width:14ch;}
-  .invite .hero-ring{width:min(520px,56vw);}
-  .who{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:780px;margin-top:40px;}
-  .who-row{border-top:1px solid #2a303a;padding-top:18px;}
-  .who-row .label{color:var(--blue-light);display:block;margin-bottom:10px;}
-  .who-row p{color:#b4bac3;font-size:15.5px;line-height:1.62;}
+  /* ---------- close ---------- */
+
+  /* ---------- invite ---------- */
+  .who{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:820px;margin-top:44px;}
+  .who-row{border-top:1px solid var(--line);padding-top:18px;}
+  .who-row .label{color:var(--acc);margin-bottom:10px;}
+  .who-row p{color:var(--muted);font-size:16px;line-height:1.6;}
   .button{
-    display:inline-block;color:#fff;background:var(--blue);border-radius:4px;
-    font-family:var(--mono);font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
-    padding:14px 24px;text-decoration:none;transition:background .18s ease;
+    display:inline-block;margin-top:44px;color:var(--ink);background:var(--ember);border-radius:6px;
+    font-size:15px;font-weight:600;letter-spacing:-.01em;padding:14px 26px;text-decoration:none;transition:background .18s ease;
   }
-  .button:hover{background:var(--blue-hover);}
-  .button:focus-visible{outline:2px solid #fff;outline-offset:3px;}
-  .contact{position:relative;margin-top:44px;}
+  .button:hover{background:#ff8457;}
+  .button:focus-visible{outline:2px solid var(--bone);outline-offset:3px;}
 
-  footer{background:var(--ink);color:var(--slate);border-top:1px solid #2a303a;}
-  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px 28px;flex-wrap:wrap;padding-block:24px 34px;}
-  footer .logo{color:#fff;}
-  footer .logo svg{width:22px;height:22px;}
-  footer .logo span{font-size:17px;}
-  footer .meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;display:flex;gap:22px;flex-wrap:wrap;}
-  footer a{color:var(--slate);text-decoration:none;}
-  footer a:hover{color:#fff;}
+  footer{background:var(--night);color:var(--ash);border-top:1px solid var(--night-line);}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px 28px;flex-wrap:wrap;padding-block:26px 34px;}
+  footer .meta{display:flex;gap:24px;flex-wrap:wrap;font-size:13.5px;}
+  footer a{color:var(--ash);text-decoration:none;}
+  footer a:hover{color:var(--bone);}
 
-  @media (max-width:860px){
-    .tracks,.builds,.result,.why{grid-template-columns:1fr;}
-    .team{grid-template-columns:1fr 1fr;}
+  @media (max-width:900px){
+    .stats{grid-template-columns:1fr 1fr;row-gap:32px;}
+    .split,.context{grid-template-columns:1fr;gap:16px;}
+    .context{gap:28px;}
+    .three{grid-template-columns:1fr;}
   }
   @media (max-width:640px){
     body{font-size:16px;}
-    .hero-ring{right:-30vw;width:95vw;opacity:.7;}
-    .topbar a.mail{display:none;}
-    .split-row{grid-template-columns:1fr;gap:22px;}
-    .card{padding:20px 18px 22px;}
-    .seq{grid-template-columns:1fr 1fr;gap:26px 0;margin-top:34px;}
-    .stages{grid-template-columns:1fr;}
-    .team{grid-template-columns:1fr;}
+    .compress{grid-template-columns:1fr 1fr;}
+    .compress .head:first-child{display:none;}
+    .compress .row .claim{grid-column:1 / -1;border-bottom:0;padding-bottom:4px;}
+    .compress .row .cell{padding-top:0;font-size:15px;}
+    .flow{grid-template-columns:1fr;gap:8px;}
+    .flow .arrow{display:none;}
+    .flow .label{margin-top:14px;}
+    .people{grid-template-columns:1fr;gap:36px;}
     .who{grid-template-columns:1fr;gap:26px;}
-    .result-step .v{font-size:16px;}
 
-    /* The loop: the wide diagram becomes a readable vertical list */
+    /* The loop: the wide diagram becomes a vertical list */
     .loop svg,.loop-key{display:none;}
-    .loop-list{display:block;list-style:none;margin:0;padding:0;counter-reset:loop;}
+    .loop-list{display:block;list-style:none;margin:0;padding:0;}
     .loop-list li{
-      position:relative;padding:12px 14px 12px 16px;margin-bottom:8px;border-radius:6px;
-      border:1px solid var(--line);border-left-width:4px;background:var(--paper);
-      font-size:15px;line-height:1.45;color:var(--graphite);
+      padding:13px 16px;margin-bottom:8px;border-radius:6px;
+      border:1px solid #b9b3a6;font-size:15px;line-height:1.45;color:var(--stone);
     }
-    .loop-list li b{display:block;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:3px;}
-    .loop-list li .state{float:right;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
-    .loop-list li.building{border-left-color:var(--brass);background:rgba(161,124,60,.07);}
-    .loop-list li.building .state{color:var(--brass-dark);}
-    .loop-list li.open{border-left-color:var(--blue);background:rgba(27,83,255,.06);}
-    .loop-list li.open .state{color:var(--blue);}
-    .loop-list li.works .state{color:var(--slate);}
-    .loop-list .back{border:0;background:none;padding:2px 0 0 16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-dark);}
+    .loop-list li b{display:block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);margin-bottom:3px;}
+    .loop-list li .state{float:right;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
+    .loop-list li.building{border:1px dashed var(--rust);background:rgba(195,69,25,.05);}
+    .loop-list li.building b,.loop-list li.building .state{color:var(--rust);}
+    .loop-list li.research{border-color:var(--rust);background:var(--rust);color:rgba(255,255,255,.85);}
+    .loop-list li.research b,.loop-list li.research .state{color:#fff;}
+    .loop-list .back{border:0;padding:2px 0 0 16px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);}
     .loop figcaption{text-align:left;}
+  }
+  /* ---------- motion ----------
+     Everything below only sets a starting state when JS is running and motion is allowed.
+     Without either, the page renders in its final state. */
+  .step.agent{display:grid;}
+  .step.agent > span{grid-area:1 / 1;}
+  .step.agent .was{visibility:hidden;}
+
+  @media (prefers-reduced-motion:no-preference){
+    /* section headings */
+    .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
+    .js .reveal.in{opacity:1;transform:none;}
+
+    /* hero: the four lines land one after another, ours last */
+    .js .compress .row > *{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease;}
+    .js .compress.in .row > *{opacity:1;transform:none;}
+    .js .compress.in .row:nth-of-type(2) > *{transition-delay:.45s;}
+    .js .compress.in .row:nth-of-type(3) > *{transition-delay:.9s;}
+    .js .compress.in .row:nth-of-type(4) > *{transition-delay:1.5s;}
+    .js .hero .sub.reveal{transition-delay:2.1s;}
+
+    /* the shift: the agents row arrives as a copy, then only the doing moves */
+    .js .flow .wa{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease;}
+    .js .flow.in .wa{opacity:1;transform:none;transition-delay:.25s;}
+    .js .flow .step{transition:background-color .5s ease,border-color .5s ease,color .5s ease;}
+    .js .flow:not(.swapped) .step.human{background:var(--raised);border-color:var(--line);color:var(--ink);}
+    .js .flow:not(.swapped) .step.agent{background:var(--raised);border-style:solid;color:var(--ink);}
+    .js .flow:not(.swapped) .step.agent .was{visibility:visible;}
+    .js .flow:not(.swapped) .step.agent .now{visibility:hidden;}
+
+    /* the loop: stages light up in order */
+    .js .loop .s{opacity:0;transition:opacity .45s ease;}
+    .js .loop.in .s{opacity:1;transition-delay:calc(var(--i) * .26s);}
+    .js .loop-list li{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;}
+    .js .loop.in .loop-list li{opacity:1;transform:none;transition-delay:calc(var(--i) * .16s);}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;}}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
-    <path d="M76.9 30.7A30 30 0 1 0 76.9 69.3" fill="none" stroke="#1c2129" stroke-width="13"/>
-    <circle cx="61" cy="50" r="11.5" fill="#1b53ff"/>
-  </svg>
-  <div class="wrap topbar">
-    <a class="logo" href="#" aria-label="CatchAll">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24.4 8.9A11 11 0 1 0 24.4 23.1" fill="none" stroke="#fff" stroke-width="5"/><circle cx="16" cy="16" r="4.8" fill="#1b53ff"/></svg>
-      <span>CatchAll</span>
-    </a>
-    <a class="mail" href="mailto:hello@catchall.com">Get in touch</a>
-  </div>
-  <div class="wrap hero-copy">
-    <span class="eyebrow">Applied AI research &middot; 2026</span>
-    <h1>Work is being automated. Judgment isn&rsquo;t.</h1>
-    <p class="category">The AI decision layer trained on real feedback.</p>
-    <p class="hero-note">AI today makes a formidable intern. What&rsquo;s missing is everything an executive does: deciding what matters, what to do about it, and whether it worked.</p>
+<header class="hero dark">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="wordmark" href="#" aria-label="CatchAll">CatchAll<i>.</i></a>
+      <span class="label">In stealth &middot; 2026</span>
+    </div>
+
+    <span class="q">What&rsquo;s broken, and how big is it?</span>
+    <div class="compress" data-anim role="table" aria-label="What each wave of technology compressed">
+      <span class="head" role="columnheader"></span>
+      <span class="head label" role="columnheader">Bottleneck</span>
+      <span class="head label" role="columnheader">Result</span>
+      <div class="row" role="row"><span class="claim">Amazon compressed delivery.</span><span class="cell">logistics</span><span class="cell">months to days</span></div>
+      <div class="row" role="row"><span class="claim">Lovable compressed building.</span><span class="cell">code</span><span class="cell">months to hours</span></div>
+      <div class="row" role="row"><span class="claim">Claude compressed doing.</span><span class="cell">labor</span><span class="cell">hours to minutes</span></div>
+      <div class="row ours" role="row"><span class="claim">We&rsquo;re compressing growth.</span><span class="cell">judgment</span><span class="cell">years to months</span></div>
+    </div>
+    <p class="sub">CatchAll brings agents and companies <b>founder-level judgment</b>: the decision layer that runs a company&rsquo;s growth calls, starting with marketing.</p>
   </div>
 </header>
 
 <main>
-  <section>
+  <section class="light">
     <div class="wrap">
-      <span class="eyebrow">01 &middot; The gap</span>
-      <h2>Two kinds of AI work are funded. The one between them is underbuilt.</h2>
-      <div class="tracks" style="margin-top:28px">
-        <div class="card track">
-          <span class="label">Funded</span>
-          <h3>Applied AI</h3>
-          <p>Takes existing models and deploys them into existing businesses. Apps, forward-deployed engineers, agents as a service.</p>
-        </div>
-        <div class="card blue track">
-          <span class="label">Underbuilt</span>
-          <h3>Judgment</h3>
-          <p>The models, methods and priors a machine needs to decide well inside a particular field. Neither side has made it their problem.</p>
-        </div>
-        <div class="card track">
-          <span class="label">Funded</span>
-          <h3>AI research</h3>
-          <p>Extends what those models can do. Continual learning, world models, new attention mechanisms.</p>
-        </div>
-      </div>
-      <p class="after-tracks">Models only recently got good enough at execution that deciding became the constraint. Model providers now sell decisions as an API: a fast, typed answer about the input in front of the model. That is classification. A business decision is a bet on what happens next. Decision-intelligence software already recommends what to do, but it rarely commits to a forecast before the outcome or gets scored against doing nothing, so there is no record of whether its judgment is any good. That record is what we are building.</p>
-    </div>
-  </section>
+      <span class="q">If agents can do the work, why hasn&rsquo;t growth exploded?</span>
+      <h2>AI took over the tasks.<br class="d"> Humans just moved to watching it.</h2>
 
-  <section>
-    <div class="wrap">
-      <div class="split-row">
-        <div>
-          <span class="eyebrow">02 &middot; The problem</span>
-          <h2>A general model brought to a specialist decision has no priors but the internet&rsquo;s.</h2>
-        </div>
-        <div>
-          <p class="lead">Judgment needs more than reasoning. It draws on a field&rsquo;s accumulated frameworks, the things it has already established, the methods that actually measure it, and a record of what has worked and what hasn&rsquo;t. Take those away and a very capable model will reason fluently to an average answer, and sound certain doing it.</p>
-          <p>That body of work doesn&rsquo;t exist for marketing, and it doesn&rsquo;t exist for most fields. As long as a person owns the decision, the reasoning behind it rarely leaves their head. Nothing is written down, so nothing is scored, so the next decision starts where the last one did.</p>
-          <p class="beat">Nothing compounds.</p>
-        </div>
+      <div class="flow" data-anim aria-label="Before AI, a human decides, does and checks. With agents, a human still decides and checks; only the doing moved.">
+        <span class="label">Before AI</span>
+        <div class="step">Human decides</div><span class="arrow" aria-hidden="true">&rarr;</span>
+        <div class="step">Human does</div><span class="arrow" aria-hidden="true">&rarr;</span>
+        <div class="step">Human checks</div>
+        <span class="label acc wa">With agents</span>
+        <div class="step human wa">Human decides</div><span class="arrow wa" aria-hidden="true">&rarr;</span>
+        <div class="step agent wa"><span class="was" aria-hidden="true">Human does</span><span class="now">Agent does</span></div><span class="arrow wa" aria-hidden="true">&rarr;</span>
+        <div class="step human watch wa">Human checks</div>
+      </div>
+
+      <div class="kicker split">
+        <p>The bottleneck didn&rsquo;t disappear. <span class="acc">It shifted to judgment.</span></p>
+        <p class="note">After product-market fit, growth is good decisions made at volume: every market, every channel, every audience, every week. Every company we scaled stalled in the same place: the number of good calls the team could make.</p>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="dark">
     <div class="wrap">
-      <span class="eyebrow">03 &middot; The engine</span>
-      <h2>We are building a judgment engine.</h2>
-      <p>One half assembles what a decision rests on. The other is the research into what should be making the decision.</p>
+      <span class="q">So what is CatchAll?</span>
+      <h2>Agents do the work.<br class="d"> CatchAll makes the decisions.</h2>
+      <p class="lead">Models are commodities. What you feed them decides. CatchAll sits on top of every frontier model, so every better model makes it stronger.</p>
 
-      <div class="builds">
-        <div class="card build context">
-          <span class="label">Being built</span>
-          <h3>The context layer</h3>
-          <p>Everything a decision in the field rests on, gathered in one place. Today it is scattered across tools, or held in someone&rsquo;s head.</p>
-
+      <div class="context">
+        <div class="context-intro">
+          <span class="label">The context layer &middot; being built</span>
+          <h3>Everything a decision rests on,<br class="d"> gathered in one place.</h3>
+          <p>Today it is scattered across tools, or held in someone&rsquo;s head. The decision layer weighs every input for trust, strength, age and reach, and flags what&rsquo;s missing, instead of stuffing it all into a prompt.</p>
+        </div>
+        <div>
           <div class="parts">
             <div class="part">
               <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M2.8 18.4h16.4"/><path d="M5.6 18.4v-5.1M9.7 18.4V8.4M13.8 18.4v-7.6M17.9 18.4V4.2"/></svg></div>
@@ -374,10 +330,9 @@
             <div class="part">
               <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4.2h16l-6.2 7.3v6.1l-3.6 2.1v-8.2Z"/></svg></div>
               <div class="part-k">Retrieval and scoping</div>
-              <div class="part-v">Once you know what is wrong, current retrieval finds the history that bears on it. The open problem is the step before: choosing which of thousands of metrics deserves a look today, when nothing has flagged yet.</div>
+              <div class="part-v">Once you know what is wrong, current retrieval finds the history that bears on it. The harder step is the one before: choosing which of thousands of metrics deserves a look today, when nothing has flagged yet.</div>
             </div>
           </div>
-
           <details class="more">
             <summary>Three more sources it draws on</summary>
             <ul class="more-list">
@@ -386,276 +341,195 @@
               <li><b>Company context.</b> Goals, constraints and economics: margin, inventory, cash, and what this effort is for.</li>
             </ul>
           </details>
-
-          <p class="after">Point a frontier model at this and it already beats the same model working from scattered tools. That is the floor the research builds on.</p>
-        </div>
-
-        <div class="card build research">
-          <span class="label">The open problem</span>
-          <h3>The research</h3>
-          <p>How a model learns to make the call, and to say how sure it is. The training signal is real outcomes, graded against what would have happened anyway.</p>
-
-          <div class="parts">
-            <div class="part">
-              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 16.5a7.5 7.5 0 1 1 15 0"/><path d="M11 16.5l3.6-4.4"/></svg></div>
-              <div class="part-k">Calibrated confidence</div>
-              <div class="part-v">Every call carries a probability, and training rewards how honest that probability proves to be, using a proper scoring rule. A stated 70% should come true about seven times in ten. Models trained on pass/fail learn to sound certain instead.</div>
-            </div>
-            <div class="part">
-              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="4.6" cy="11" r="2.2"/><circle cx="17.4" cy="5.6" r="2.2"/><circle cx="17.4" cy="16.4" r="2.2"/><path d="M6.6 10.1 15.4 6.4M6.6 11.9l8.8 3.7"/></svg></div>
-              <div class="part-k">Experiments over correlation</div>
-              <div class="part-v">Holdouts and deliberate variation inside partner businesses, so the engine learns what a decision caused rather than what moved alongside it: the confounder nobody logged, two levers that always move together, the tide.</div>
-            </div>
-            <div class="part">
-              <div class="part-icon" aria-hidden="true"><svg viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3 19.5 7.5 11 12 2.5 7.5Z"/><path d="M2.5 11.5 11 16l8.5-4.5"/><path d="M2.5 15.2 11 19.6l8.5-4.4"/></svg></div>
-              <div class="part-k">Local, informed by the network</div>
-              <div class="part-v">Each business borrows from what every other business has taught the model, then leans on its own evidence as it builds up. What worked for Coca-Cola may not work for a local craft cola.</div>
-            </div>
-          </div>
-
-          <details class="more">
-            <summary>Three more questions we are researching</summary>
-            <ul class="more-list">
-              <li><b>Training on outcomes.</b> Which mix of expert examples, outcome-verified rewards and calibration rewards builds judgment fastest, and how much of the gain comes from the data rather than the method.</li>
-              <li><b>Statistics against language models.</b> Whether a language model with full context beats a plain statistical model on the same questions, and where each belongs.</li>
-              <li><b>Value of information.</b> When another week of data would change the call, and when it is time to commit.</li>
-            </ul>
-          </details>
-
-          <p class="after">We think the step change comes from what the model learns from, rather than from a larger general model.</p>
         </div>
       </div>
 
-      <figure class="loop">
+      <p class="kicker">Point a frontier model at this and it already beats the same model working from scattered tools.<br class="d"> <span class="acc">That&rsquo;s the floor the research builds on.</span></p>
+    </div>
+  </section>
+
+  <section class="light">
+    <div class="wrap">
+      <span class="q">How does it actually work?</span>
+      <h2>Every decision makes the next one smarter.</h2>
+      <p class="lead">Every call is predicted before anything runs, checked against the outcome and against doing nothing, then written back so the next call starts smarter.</p>
+
+      <figure class="loop" data-anim>
         <div class="loop-key" aria-hidden="true">
-          <span><i></i>Largely works today</span>
+          <span><i></i>Works today</span>
           <span class="building"><i></i>Being built</span>
-          <span class="open"><i></i>The open problem</span>
+          <span class="research"><i></i>Our research</span>
         </div>
-        <svg viewBox="0 0 1000 302" role="img" aria-label="The loop: context feeds selection, then diagnosis, then strategy, then execution; execution feeds learning, and learning is scored and written back into context. Strategy decides and forecasts what the decision will do; the forecast is sealed before execution acts; learning waits for the outcome and grades the sealed forecast against it. Diagnosis, strategy and learning together form the judgment problem and are open. Context and selection are being built, though the harder half of selection remains open. Execution largely works today.">
+        <svg viewBox="0 0 1000 302" role="img" aria-label="The loop: context feeds selection, then diagnosis, then strategy, then execution; execution feeds learning, and learning is scored and written back into context. Strategy makes the call and forecasts what it will do; the forecast is sealed before execution acts; learning waits for the outcome, grades the sealed forecast against it, and learns. Diagnosis, strategy and learning form the judgment problem and are our research. Context and selection are being built. Execution works today.">
           <defs>
             <marker id="ah" viewBox="0 0 8 8" refX="6.4" refY="4" markerWidth="6.5" markerHeight="6.5" orient="auto">
-              <path d="M0.8 1.2 6.2 4 0.8 6.8Z" fill="#a17c3c"/>
+              <path d="M0.8 1.2 6.2 4 0.8 6.8Z" fill="#5e5a53"/>
             </marker>
           </defs>
-          <rect x="425" y="44" width="340" height="240" fill="rgba(27,83,255,.045)" stroke="#1b53ff" stroke-width="1.1" stroke-dasharray="5 5" opacity=".85"/>
-          <text x="595" y="32" font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="2.6" text-anchor="middle" fill="#1b53ff">JUDGMENT</text>
-          <g font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="1.5" text-anchor="middle">
-            <rect x="1" y="72" width="150" height="62" fill="rgba(161,124,60,.12)" stroke="#a17c3c"/>
-            <text x="76" y="109" fill="#8a6b2e">CONTEXT</text>
-            <rect x="196" y="72" width="150" height="62" fill="rgba(161,124,60,.12)" stroke="#a17c3c"/>
-            <text x="271" y="109" fill="#8a6b2e">SELECTION</text>
-            <rect x="433" y="72" width="150" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="508" y="109" fill="#1b53ff">DIAGNOSIS</text>
-            <rect x="603" y="72" width="150" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="678" y="101" fill="#1b53ff">STRATEGY</text>
-            <rect x="840" y="72" width="160" height="62" fill="none" stroke="#d3d8de"/>
-            <text x="920" y="101" fill="#565f6c">EXECUTION</text>
-            <rect x="433" y="196" width="320" height="62" fill="rgba(27,83,255,.10)" stroke="#1b53ff"/>
-            <text x="593" y="222" fill="#1b53ff">LEARNING</text>
+          <!-- class="s" + --i sets the order each part lights up in -->
+          <g class="s" style="--i:4">
+            <rect x="425" y="44" width="340" height="240" rx="6" fill="rgba(195,69,25,.04)" stroke="#141619" stroke-width="1" stroke-dasharray="5 5" opacity=".55"/>
+            <text x="595" y="32" font-family="Inter, sans-serif" font-weight="700" font-size="11.5" letter-spacing="2.6" text-anchor="middle" fill="#141619">JUDGMENT</text>
           </g>
-          <g font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.2" text-anchor="middle">
-            <text x="678" y="120" fill="#1b53ff" opacity=".8">DECIDE + FORECAST</text>
-            <text x="920" y="120" fill="#565f6c" opacity=".8">ACT</text>
-            <text x="593" y="241" fill="#1b53ff" opacity=".8">OUTCOME &#8594; GRADE</text>
-            <text x="790" y="94" fill="#1b53ff">SEALED</text>
+          <g font-family="Inter, sans-serif" font-weight="700" font-size="12" letter-spacing="1.6" text-anchor="middle">
+            <g class="s" style="--i:0">
+              <rect x="1" y="72" width="150" height="62" rx="5" fill="rgba(195,69,25,.05)" stroke="#c34519" stroke-dasharray="4 3"/>
+              <text x="76" y="108" fill="#c34519">CONTEXT</text>
+            </g>
+            <g class="s" style="--i:2">
+              <rect x="196" y="72" width="150" height="62" rx="5" fill="rgba(195,69,25,.05)" stroke="#c34519" stroke-dasharray="4 3"/>
+              <text x="271" y="108" fill="#c34519">SELECTION</text>
+            </g>
+            <g class="s" style="--i:5">
+              <rect x="433" y="72" width="150" height="62" rx="5" fill="#c34519"/>
+              <text x="508" y="108" fill="#fff">DIAGNOSIS</text>
+            </g>
+            <g class="s" style="--i:7">
+              <rect x="603" y="72" width="150" height="62" rx="5" fill="#c34519"/>
+              <text x="678" y="100" fill="#fff">STRATEGY</text>
+              <text x="678" y="119" fill="#fff" opacity=".82" font-weight="600" font-size="10" letter-spacing="1.2">CALL IT</text>
+            </g>
+            <g class="s" style="--i:9">
+              <rect x="840" y="72" width="160" height="62" rx="5" fill="none" stroke="#b9b3a6"/>
+              <text x="920" y="100" fill="#5e5a53">EXECUTION</text>
+              <text x="920" y="119" fill="#5e5a53" opacity=".85" font-weight="600" font-size="10" letter-spacing="1.2">DO IT</text>
+            </g>
+            <g class="s" style="--i:11">
+              <rect x="433" y="196" width="320" height="62" rx="5" fill="#c34519"/>
+              <text x="593" y="222" fill="#fff">LEARNING</text>
+              <text x="593" y="241" fill="#fff" opacity=".82" font-weight="600" font-size="10" letter-spacing="1.2">GRADE IT &#8594; LEARN IT</text>
+            </g>
           </g>
-          <g stroke="#a17c3c" stroke-width="1.2" fill="none">
-            <path d="M151 103h33" marker-end="url(#ah)"/>
-            <path d="M346 103h75" marker-end="url(#ah)"/>
-            <path d="M583 103h8" marker-end="url(#ah)"/>
-            <path d="M753 103h75" marker-end="url(#ah)"/>
-            <path d="M920 134v93H767" marker-end="url(#ah)"/>
-            <path d="M433 227H40v-81" marker-end="url(#ah)"/>
+          <g stroke="#5e5a53" stroke-width="1.2" fill="none">
+            <path class="s" style="--i:1" d="M151 103h33" marker-end="url(#ah)"/>
+            <path class="s" style="--i:3" d="M346 103h75" marker-end="url(#ah)"/>
+            <path class="s" style="--i:6" d="M583 103h8" marker-end="url(#ah)"/>
+            <path class="s" style="--i:8" d="M753 103h75" marker-end="url(#ah)"/>
+            <path class="s" style="--i:10" d="M920 134v93H767" marker-end="url(#ah)"/>
+            <path class="s" style="--i:12" d="M433 227H40v-81" marker-end="url(#ah)"/>
           </g>
-          <text x="118" y="200" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.6" text-anchor="middle" fill="#a17c3c">SCORED, THEN</text>
-          <text x="118" y="215" font-family="JetBrains Mono, monospace" font-size="9.5" letter-spacing="1.6" text-anchor="middle" fill="#a17c3c">WRITTEN BACK</text>
+          <text class="s" style="--i:8" x="796" y="94" font-family="Inter, sans-serif" font-weight="600" font-size="10" letter-spacing="1.2" text-anchor="middle" fill="#c34519">SEALED</text>
+          <g class="s" style="--i:12" font-family="Inter, sans-serif" font-weight="600" font-size="10" letter-spacing="1.4" text-anchor="middle" fill="#5e5a53">
+            <text x="118" y="200">SCORED, THEN</text>
+            <text x="118" y="215">WRITTEN BACK</text>
+          </g>
         </svg>
 
         <!-- Phone-width version of the diagram (shown under 640px instead of the SVG) -->
         <ol class="loop-list">
-          <li class="building"><span class="state">Being built</span><b>Context</b>Everything the decision rests on.</li>
-          <li class="building"><span class="state">Being built</span><b>Selection</b>What to look at. The harder half, choosing before anything flags, is open.</li>
-          <li class="open"><span class="state">Open &middot; judgment</span><b>Diagnosis</b>What is actually wrong.</li>
-          <li class="open"><span class="state">Open &middot; judgment</span><b>Strategy</b>Decide, and forecast what the decision will do. The forecast is sealed before anything runs.</li>
-          <li class="works"><span class="state">Works today</span><b>Execution</b>Act on it.</li>
-          <li class="open"><span class="state">Open &middot; judgment</span><b>Learning</b>Wait for the outcome, then grade the sealed forecast against it.</li>
-          <li class="back">&uarr; Scored, then written back into context</li>
+          <li style="--i:0" class="building"><span class="state">Being built</span><b>Context</b>Everything the decision rests on.</li>
+          <li style="--i:1" class="building"><span class="state">Being built</span><b>Selection</b>What to look at, including the harder half: choosing before anything flags.</li>
+          <li style="--i:2" class="research"><span class="state">Our research</span><b>Diagnosis</b>What is actually wrong.</li>
+          <li style="--i:3" class="research"><span class="state">Our research</span><b>Strategy &middot; call it</b>Make the call and forecast what it will do. The forecast is sealed before anything runs.</li>
+          <li style="--i:4"><span class="state">Works today</span><b>Execution &middot; do it</b>Agents and people act on it.</li>
+          <li style="--i:5" class="research"><span class="state">Our research</span><b>Learning</b>Grade it, learn it: wait for the outcome, score the sealed forecast against it, and write it back.</li>
+          <li style="--i:6" class="back">&uarr; Scored, then written back into context</li>
         </ol>
-        <figcaption>Execution largely works today. The context layer and retrieval over it are what we are building. Diagnosis, strategy and learning are the open problem: every decision carries a forecast, sealed before it runs and graded once the outcome settles.</figcaption>
+        <figcaption>Execution largely works today. The context layer, and choosing what to look at, are being built. Diagnosis, strategy and learning are our research: every call carries a forecast, sealed before it runs and graded once the outcome settles.</figcaption>
       </figure>
+
+      <p class="kicker">Better models make this loop stronger. <span class="acc">No model can create the record it depends on.</span></p>
     </div>
   </section>
 
-  <section>
+  <section class="dark">
     <div class="wrap">
-      <span class="eyebrow">04 &middot; First result</span>
-      <h2>Will a struggling ad set recover on its own? <span class="placeholder-chip">Placeholder figures</span></h2>
-      <p>One worked example of the loop, from the first question we are testing. The forecast was sealed before the outcome, then scored against what happened.</p>
+      <span class="q">Why can&rsquo;t AI do it today?</span>
+      <h2>Judgment is a math problem,<br class="d"> not a prompt.</h2>
+      <p class="lead">Prediction works where the world repeats: one huge shared dataset, outcomes you can check every day. A company has data nobody else has, results that arrive late and tangled, and a new competitor, rule or stockout every quarter. No global dataset can run it.</p>
 
-      <div class="result">
-        <div class="result-steps">
-          <div class="result-step">
-            <span class="n">01</span>
-            <span class="k">What we predicted &middot; sealed [date]</span>
-            <span class="v">If left alone, a [30]% chance this ad set&rsquo;s cost per purchase is back within its normal range in [14] days.</span>
-          </div>
-          <div class="result-step">
-            <span class="n">02</span>
-            <span class="k">What happened</span>
-            <span class="v">Left alone, it stayed above range: [$46] against a normal <span style="white-space:nowrap">[$31&ndash;39]</span>.</span>
-          </div>
-          <div class="result-step scored">
-            <span class="n">03</span>
-            <span class="k">How it was scored</span>
-            <span class="v">Brier score [0.09], against [0.20] for the base rate of ad sets like it recovering on their own. We take credit for the gap only.</span>
+      <div class="three">
+        <div class="card">
+          <span class="label">Statistical</span>
+          <h3>Cause</h3>
+          <p>Which call actually moved the number? Results arrive late, and tangled with everything else.</p>
+          <div class="approach">
+            <span class="label">Our approach</span>
+            <b>Experiments over correlation</b>
+            <p>Holdouts and deliberate variation inside partner businesses, so the engine learns what a decision caused rather than what moved alongside it: the confounder nobody logged, two levers that always move together, the tide.</p>
           </div>
         </div>
-
-        <div class="card chart-card">
-          <span class="label">Cost per purchase &middot; illustrative</span>
-          <svg viewBox="0 0 560 300" role="img" aria-label="Illustrative chart. Cost per purchase sits inside its normal range for two weeks, then climbs above it. On day 0 a forecast is sealed: a 30 percent chance it returns to range within 14 days if left alone. It stays above range through day 14, marked with a dot.">
-            <g stroke="#d3d8de" stroke-width="1"><path d="M50 250H530"/></g>
-            <rect x="50" y="150" width="480" height="45" fill="#8a929e" opacity=".16"/>
-            <g font-family="JetBrains Mono, monospace" font-size="10" fill="#8a929e">
-              <text x="42" y="114" text-anchor="end">[$48]</text>
-              <text x="42" y="154" text-anchor="end">[$39]</text>
-              <text x="42" y="199" text-anchor="end">[$31]</text>
-              <text x="56" y="188">NORMAL RANGE</text>
-              <text x="50" y="270">DAY &#8722;14</text>
-              <text x="290" y="270" text-anchor="middle">0</text>
-              <text x="530" y="270" text-anchor="end">+14</text>
-            </g>
-            <path d="M290 52V250" stroke="#0d1117" stroke-width="1" stroke-dasharray="3 3"/>
-            <text x="296" y="60" font-family="JetBrains Mono, monospace" font-size="10" fill="#0d1117">SEALED &#183; [30]% BACK IN RANGE</text>
-            <path d="M50 172 L84 166 L118 176 L153 168 L187 160 L221 150 L256 138 L290 124 L324 118 L359 126 L393 114 L427 120 L461 110 L496 116 L530 112" fill="none" stroke="#0d1117" stroke-width="2.2" stroke-linejoin="round"/>
-            <circle cx="530" cy="112" r="7" fill="#1b53ff"/>
-            <text x="522" y="94" font-family="JetBrains Mono, monospace" font-size="10" fill="#1b53ff" text-anchor="end">DAY 14 &#183; STILL ABOVE</text>
-          </svg>
-          <div class="chart-legend">
-            <span><i></i>Cost per purchase</span>
-            <span class="band"><i></i>Normal range</span>
-            <span class="seal"><i></i>Forecast sealed</span>
+        <div class="card">
+          <span class="label">Mathematical</span>
+          <h3>Confidence</h3>
+          <p>How sure should it be? A call is only worth money if its confidence is honest.</p>
+          <div class="approach">
+            <span class="label">Our approach</span>
+            <b>Calibrated confidence</b>
+            <p>Every call carries a probability, and training rewards how honest it proves to be, using a proper scoring rule. A stated 70% should come true about seven times in ten. Models trained on pass/fail learn to sound certain instead.</p>
+          </div>
+        </div>
+        <div class="card">
+          <span class="label">Technological</span>
+          <h3>Record</h3>
+          <p>What would have happened otherwise? That data doesn&rsquo;t exist. It has to be made, call by call.</p>
+          <div class="approach">
+            <span class="label">Our approach</span>
+            <b>Local, informed by the network</b>
+            <p>Each business borrows from what every other business has taught the model, then leans on its own evidence as it builds up. What worked for Coca-Cola may not work for a local craft cola.</p>
           </div>
         </div>
       </div>
+
+      <div class="three-wrap">
+        <details class="more">
+          <summary>Three more questions we&rsquo;re researching</summary>
+          <ul class="more-list">
+            <li><b>Training on outcomes.</b> Which mix of expert examples, outcome-verified rewards and calibration rewards builds judgment fastest, and how much of the gain comes from the data rather than the method.</li>
+            <li><b>Statistics against language models.</b> Whether a language model with full context beats a plain statistical model on the same questions, and where each belongs.</li>
+            <li><b>Value of information.</b> When another week of data would change the call, and when it is time to commit.</li>
+          </ul>
+        </details>
+      </div>
+
+      <p class="kicker">Today&rsquo;s AI is trained to sound right. <span class="acc">Judgment has to be graded on being right.</span></p>
     </div>
   </section>
 
-  <section>
+  <section class="light">
     <div class="wrap">
-      <div class="split-row">
+      <span class="q">Who is building this?</span>
+      <h2>Operators who lived the problem.<br class="d"> Scientists who can measure it.</h2>
+
+      <div class="stats">
+        <div class="stat"><b>$150M+</b><span>in revenue, as founders</span></div>
+        <div class="stat"><b>50+</b><span>brands scaled to 7 and 8 figures</span></div>
+        <div class="stat"><b>~20</b><span>software products scaled to ~$1M each</span></div>
+        <div class="stat"><b>100s</b><span>of client companies, doing $100Ms combined</span></div>
+      </div>
+
+      <div class="people">
         <div>
-          <span class="eyebrow">05 &middot; Fit</span>
-          <h2>No two businesses are the same problem.</h2>
+          <span class="label">Founders</span>
+          <div class="person"><b>Kanishka Wanninayaka &middot; CEO</b><span>Scaled 50+ brands to 7 and 8 figures</span></div>
+          <div class="person"><b>Alex Golimbievsky</b><span>$20M+ in tech exits; ~20 software products</span></div>
+          <div class="person"><b>Aaron Hsu</b><span>ClearMask to $40M+ in 2 years; Forbes 30 Under 30</span></div>
+          <div class="person"><b>Tyrone Hazen</b><span>Puffin Drinkwear to $30M; 12+ patents</span></div>
         </div>
         <div>
-          <p>Which frameworks apply, what data exists, which methods identify anything at all: these change from one business to the next. Ship a single fixed model and you have described an average company that doesn&rsquo;t exist.</p>
-          <p>So the structure is shared and the fit is not. The record, the machinery and the method library are common to every business. Which methods apply, how far each one is trusted, and where the thresholds sit are fitted per business and re-calibrated as evidence arrives, <em>by the system, not by hand.</em></p>
+          <span class="label">Think Tank</span>
+          <div class="person"><b>Giacomo Domeniconi, PhD</b><span>IBM Watson; co-author of EvolveGCN; 37+ papers</span></div>
+          <div class="person"><b>Tamer Soliman, PhD</b><span>Led evaluation science for AWS Bedrock</span></div>
+          <div class="person"><b>Orhan Akal, PhD</b><span>Took AI from research to regulator-approved products</span></div>
+          <div class="person"><b>Ronit Kishore</b><span>Led ML at Contract Wrangler, acquired by Conga</span></div>
+          <div class="person"><b>Hertz Bugarin</b><span>Top-4 hacking competitor in the world</span></div>
         </div>
       </div>
+      <p class="also"><b>Also building with us:</b> Jesse Pisel &middot; Brek Wilkins &middot; Dan Antoche-Albi&#537;or &middot; Derrick Kwa</p>
     </div>
   </section>
 
-  <section>
+  <section class="orange close">
     <div class="wrap">
-      <span class="eyebrow">06 &middot; Why we can do this</span>
-      <h2>Our partner businesses are an instrumented lab.</h2>
-      <p>Every decision is logged before it is made and tested against what actually happened. Most judgment systems learn from whatever happened to be recorded. Ours can learn from experiments it designs.</p>
-
-      <div class="why">
-        <div class="card blue">
-          <span class="label">The standing to experiment</span>
-          <h3>We run the accounts, so we can require an experiment rather than ask for one.</h3>
-          <p>A vendor can&rsquo;t hold out part of a client&rsquo;s spend to measure what would have happened anyway. Inside our partner businesses, a holdout is a decision we are allowed to make.</p>
-        </div>
-        <div class="placeholder">
-          <span class="label">How partners share data and authority &middot; draft, pending Alex / Kanishka</span>
-          <p style="margin-top:10px">[Partner companies share (data scope) under (terms). Decision authority is delegated one decision type at a time and widens only as the record earns it.]</p>
-          <div class="stages">
-            <div class="stage"><span class="label">Stage 1</span><b>Suggests</b><span>Recommends. A human decides.</span></div>
-            <div class="stage"><span class="label">Stage 2</span><b>Acts with oversight</b><span>Acts; a human can review or override.</span></div>
-            <div class="stage"><span class="label">Stage 3</span><b>Acts on its own</b><span>Trusted to decide and execute.</span></div>
-          </div>
-        </div>
-      </div>
+      <span class="q">Where does this go?</span>
+      <h2>Marketing today.<br class="d"> Every decision a company makes, next.</h2>
+      <p class="lead">When AI out-decides people, growth stops being a bet on talent and becomes a decision about capital.<br class="d"> That&rsquo;s what compressing growth means. Years become months.</p>
     </div>
   </section>
 
-  <section>
+  <section class="dark invite">
     <div class="wrap">
-      <div class="split-row">
-        <div>
-          <span class="eyebrow">07 &middot; Trajectory</span>
-          <h2>The end state is judgment across every decision a business makes.</h2>
-        </div>
-        <div>
-          <p>Each function needs its own context and builds its own record. The machinery is the same; what it learns is not.</p>
-        </div>
-      </div>
-
-      <div class="split-row second">
-        <h2>We start in marketing.</h2>
-        <div>
-          <p>Marketing judgment is opinionated, constantly exercised, and it settles against numbers on a timescale you can learn from.</p>
-          <p>It is also honest about the difficulty. Marketing outcomes are noisy, lagged and confounded.</p>
-          <p class="beat">If the method holds here, it holds in quieter places.</p>
-        </div>
-      </div>
-
-      <div class="seq">
-        <div class="seq-step now">
-          <div class="seq-k">Marketing</div>
-          <div class="seq-n">Where we are building now.</div>
-        </div>
-        <div class="seq-step">
-          <div class="seq-k">Operations</div>
-          <div class="seq-n">Its own context, its own record.</div>
-        </div>
-        <div class="seq-step">
-          <div class="seq-k">Finance</div>
-          <div class="seq-n">Same machinery, different evidence.</div>
-        </div>
-        <div class="seq-step">
-          <div class="seq-k">Inventory &amp; ERP</div>
-          <div class="seq-n">Demand, stock and lead times, settled against what sold.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap">
-      <span class="eyebrow">08 &middot; Team</span>
-      <h2>The people behind the engine. <span class="placeholder-chip">Placeholder</span></h2>
-      <div class="team">
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-        <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Role]</span><p>[One line on what they bring.]</p></div></div>
-      </div>
-
-      <div class="advisory">
-        <span class="eyebrow">Advisory &amp; think tank</span>
-        <h3>[One line on who advises and why.]</h3>
-        <div class="team small">
-          <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Affiliation]</span><p>[Area of advice.]</p></div></div>
-          <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Affiliation]</span><p>[Area of advice.]</p></div></div>
-          <div class="person"><div class="photo">PHOTO</div><div><b>[Name]</b><span class="label">[Affiliation]</span><p>[Area of advice.]</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="invite">
-    <svg class="hero-ring" viewBox="0 0 100 100" aria-hidden="true">
-      <path d="M76.9 30.7A30 30 0 1 0 76.9 69.3" fill="none" stroke="#1c2129" stroke-width="13"/>
-      <circle cx="61" cy="50" r="11.5" fill="#1b53ff"/>
-    </svg>
-    <div class="wrap" style="position:relative">
-      <span class="eyebrow">Join us</span>
+      <span class="q">Who are we looking for?</span>
       <h2>Come and build this with us.</h2>
       <div class="who">
         <div class="who-row">
@@ -667,19 +541,14 @@
           <p>Partners for a long journey rather than a cheque. Ideally with businesses we can operate in, and a line to the few people already working on this.</p>
         </div>
       </div>
-      <div class="contact">
-        <a class="button" href="mailto:hello@catchall.com">Get in touch</a>
-      </div>
+      <a class="button" href="mailto:hello@catchall.com">Get in touch</a>
     </div>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <a class="logo" href="#" aria-label="CatchAll, back to top">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M24.4 8.9A11 11 0 1 0 24.4 23.1" fill="none" stroke="#fff" stroke-width="5"/><circle cx="16" cy="16" r="4.8" fill="#1b53ff"/></svg>
-      <span>CatchAll</span>
-    </a>
+    <a class="wordmark" href="#" aria-label="CatchAll, back to top">CatchAll<i>.</i></a>
     <div class="meta">
       <a href="mailto:hello@catchall.com">hello@catchall.com</a>
       <span>&copy; 2026 CatchAll</span>
@@ -687,5 +556,24 @@
   </div>
 </footer>
 
+<script>
+  // Start each animation when it scrolls into view. Without this script the page shows its final state.
+  (function(){
+    var root=document.documentElement;
+    document.querySelectorAll('main section .q, main section h2, main section .lead, .hero .sub').forEach(function(el){
+      el.classList.add('reveal'); el.setAttribute('data-anim','');
+    });
+    var els=document.querySelectorAll('[data-anim]');
+    function show(el){
+      el.classList.add('in');
+      if(el.classList.contains('flow')) setTimeout(function(){el.classList.add('swapped');},1300);
+    }
+    if(!('IntersectionObserver' in window)){els.forEach(show);return;}
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});
+    },{threshold:.25,rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(el){io.observe(el);});
+  })();
+</script>
 </body>
 </html>

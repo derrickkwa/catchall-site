@@ -4,43 +4,51 @@ Single-page static site. No build step, no dependencies — open `index.html`.
 
 ## What it is
 
-A pre-launch page for an applied AI research company building a judgment layer,
-starting in marketing. Two audiences: research/engineering recruits, and investors.
-One email CTA. No company name on the page by design — the name is unsettled, and
-shipping nameless keeps that decision open.
+A stealth page for CatchAll. Just enough to state the thesis, tell the story, and
+show it's a real company to anyone who looks us up after a conversation. It is not
+meant to convince on its own. It ends with one invitation, to researchers and investors, and a mailto.
+
+Copy and visual system follow the Series A deck ("CatchAll · Series A Draft (Team Flow)",
+Oct 2026). When the deck changes, the site follows it.
 
 ## Structure
 
-Everything is in `index.html`: inline CSS, inline SVG, one inline script.
-Fonts are Instrument Sans and JetBrains Mono from Google Fonts.
+Everything is in `index.html`: inline CSS and one small script that starts the scroll animations. Font is Inter from Google Fonts.
+Without JavaScript, or with reduced motion on, the page shows in its final state.
 
-- **Hero** — canvas field of cells completing, with judgment cells left unfilled
-- **The gap** — Applied AI / Judgment / AI research, the middle one unclaimed
-- **The hinge** — a general model has no priors but the internet's
-- **The judgment engine** — context layer and research, plus the loop diagram
-- **Per-business fit** — shared structure, local fit
-- **Beachhead** — marketing first, then every function
-- **Invitation** — researchers and investors, one mailto
+- **Hero** — the compression table: delivery, building, doing, *growth*
+- **The shift** — AI took over the tasks; humans moved to watching; the bottleneck is judgment
+- **What CatchAll is** — agents do the work, CatchAll makes the decisions; the context layer (carried over from the previous site)
+- **How it works** — the loop diagram, with the deck's verbs (call it, do it, grade it, learn it) on its stages.
+  States: works today (grey outline), being built (dashed orange), our research (solid orange)
+- **Why it's hard** — a math problem, not a prompt: Cause, Confidence, Record, each paired with the research approach from the previous site
+- **Team** — founder stats, founders, Think Tank, also building with us
+- **Close** — marketing today, every decision next
+- **Invite** — researchers & engineers, investors; one Get in touch button
 
-## Colour system
+## Visual system
 
-Three states, used consistently in the diagram and the build columns:
-
-| State | Token | Meaning |
+| Token | Value | Use |
 |---|---|---|
-| Solved | `--rule` `#d3d8de` | Largely works today (execution) |
-| Being built | `--cool` `#a17c3c` | The context layer — warm bronze, not grey |
-| Open | `--brass` `#1b53ff` | The judgment problem — the one signal colour |
+| `--night` | `#101214` | Dark sections |
+| `--cream` | `#f2efe7` | Light sections |
+| `--ember` | `#fe6a34` | Accent on dark, closing band |
+| `--rust` | `#c34519` | Accent on cream, the one filled card |
+| `--ash` / `--stone` | `#9b978e` / `#5e5a53` | Muted text on dark / cream |
 
-Ground is near-white `#fbfbfc`, ink `#0d1117`. Type is Archivo with JetBrains Mono.
-The hero and closing canvases draw a contour field — the landscape of possible
-strategies — with one committed path traced across it and the chosen point marked.
+Sections alternate dark and cream. Each opens with the deck's orange question.
+Wordmark is `CatchAll.` with an orange dot.
 
-Alternative treatments explored are kept in `variants/`.
+## Content rules
+
+- Only claims the deck states as fact. Anything bracketed or "confirm" in the deck stays off.
+- Advisors are off the public page until leadership decides.
+- No business model, pricing or raise details.
+
+Earlier treatments (pre-deck) are kept in `variants/` and in git history.
 
 ## Before this goes live
 
-- [ ] Replace the placeholder email (`hello@example.com`)
-- [ ] Confirm the thesis framing with Alex
-- [ ] Decide the name and register a domain
+- [ ] Confirm `hello@catchall.com` is a real, monitored address
+- [ ] Leadership sign-off on the team list and copy
 - [ ] Move this repo to the venture's GitHub org
